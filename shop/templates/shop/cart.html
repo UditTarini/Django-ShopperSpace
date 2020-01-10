@@ -1,0 +1,205 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} cart {% endblock %}
+{% block css %}
+<style>
+.btn-circle.btn-sm { 
+    width: 30px; 
+    height: 30px; 
+    padding: 6px 0px; 
+    border-radius: 15px; 
+    font-size: 8px; 
+    text-align: center; }
+
+
+    
+</style>   
+
+{% endblock %}
+{% block body %}
+
+
+<div class="pb-5 ">
+    <div class="container">
+      <div class="row  mt-5">
+        <div class=" mt-5 col-lg-12 p-5 bg-white rounded shadow p-3 mb-5">
+
+                <!-- Shopping cart table -->
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead > 
+                            <tr>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-3 text-uppercase">Product</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 text-uppercase">Price</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 text-uppercase">Quantity</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 text-uppercase">Remove</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="order"></tbody>
+                    </table>
+                </div>
+                <!-- End -->
+            </div>
+        </div>
+        <div class="contaiiner row mt-3  bg-white">
+        <div class="col-lg-6">
+            <div class="bg-light  px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
+            <div class="p-4">
+              <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
+              <div class="input-group mb-4 border rounded-pill p-2">
+                <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
+                <div class="input-group-append border-0">
+                  <button id="button-addon3" type="button" class="btn btn-success  rounded-pill"><i class="fa fa-gift "></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="bg-light  px-4 py-3 text-uppercase font-weight-bold">Instructions for seller</div>
+            <div class="p-4">
+              <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
+              <textarea name="" cols="30" rows="2" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-6  ">
+            <div class="bg-light  px-4 py-3 text-uppercase font-weight-bold">Summary </div>
+            <div class="p-1">
+           
+                <ul class="list-unstyled mb-4">
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">
+                            Price </strong><strong>&#8377
+                                <span style="font-family: 'PT Sans', sans-serif;" 
+                                id="Price"></span> </strong></li>
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Delivery
+                            </strong><strong>&#8377 
+                                 <span style="font-family: 'PT Sans', sans-serif;"
+                                 id="deliveryPrice"></span></strong></li>
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                            class="text-muted">Tax</strong><strong>&#8377
+                                 <span style="font-family: 'PT Sans', sans-serif;">0</span></strong></li>
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                            class="text-muted">Total</strong>
+                        <h5 class="font-weight-bold">&#8377 
+                            <span style="font-family: 'PT Sans', sans-serif;" id="totalPrice"></span></h5>
+                    </li>
+                </ul><a href="/shop/checkout" style="font-family: 'PT Sans', sans-serif;font-size: 22px;"
+                class="btn font-weight-bold btn-danger py-2 btn-block">Check Out</a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+if (localStorage.getItem('cart') == null) {
+    var cart = {};
+} else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+}
+console.log(cart);
+
+var totPrice = 0;
+
+
+for (item in cart){
+    let qty = cart[item][0]
+    let name = cart[item][1]
+    let price = cart[item][2]
+    let image = cart[item][3]
+    let Category = cart[item][4]
+    totPrice = totPrice + qty * price
+    mystr = `
+    <tr >
+    <th scope="row" class="border-0">
+                                    <div class="p-2">
+                                       
+                                        <img src=${image}
+                                            alt="" width="70" class="img-fluid rounded shadow-sm ">
+                                        
+                                        <div class="ml-3 d-inline-block align-middle">
+                                            <h5 class="mb-0"> <a href="#"
+                                                    style="font-family: 'Muli', sans-serif;"
+                                                    class="text-dark d-inline-block align-middle">${name}
+                                                    </a></h5><span
+                                                class="text-muted font-weight-normal font-italic d-block">Category:
+                                               ${Category} </span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td 
+                                class="border-0  align-middle ">
+                                <strong> &#8377 <span style="font-family: 'PT Sans', sans-serif;"> ${price}</span> </strong></td>
+                                <td style="font-family: 'PT Sans', sans-serif;" class="border-0 align-middle my-5 row">
+                                    <button id='minus${item}' class='btn btn-circle btn-sm  btn-outline-dark minus'><i class="fa fa-minus" aria-hidden="true"></i></button> 
+                                    <span  class="mx-2"  id='val${item}'> ${qty} </span> 
+                                    <button  id='plus${item}' class='btn btn-circle btn-sm btn-outline-dark plus'> <i class="fa fa-plus" aria-hidden="true"></i> </button>
+                                </td>
+                                <td id='trash${item}' class="border-0 align-middle my-5 mx-2  trash"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                                </tr >`;
+    $(`#order`).append(mystr);
+
+
+}
+if (isEmpty(cart)) {
+    var deliveryPrice = 0
+ }else{
+    deliveryPrice = 40
+ }
+ function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
+totalPrice = totPrice + deliveryPrice
+document.getElementById('Price').innerHTML = totPrice;
+document.getElementById('totalPrice').innerHTML = totalPrice;
+document.getElementById('deliveryPrice').innerHTML = deliveryPrice;
+
+
+$('.trash').click(function(){
+    tId = this.id.slice(5, );
+    tId.toString()
+    console.log(tId)
+    delete cart[tId]
+    updateCart(cart);
+});
+
+$('.minus').click(function() {
+    a = this.id.slice(7, );
+    cart['pr' + a][0] = cart['pr' + a][0] - 1;
+    cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+
+    updateCart(cart);
+});
+
+$('.plus').click(function() {
+    a = this.id.slice(6, );
+    cart['pr' + a][0] = cart['pr' + a][0] + 1;
+    document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+    updateCart(cart);
+});
+
+function updateCart(cart) {
+localStorage.setItem('cart', JSON.stringify(cart));
+window.location.reload();
+console.log(cart);
+}
+
+</script>
+{% endblock %}
