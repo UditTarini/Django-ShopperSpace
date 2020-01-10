@@ -43,6 +43,19 @@ class Orders(models.Model):
     city = models.CharField(max_length=50)
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100)
-   
+STATUS = (
+    ('Order Confirmed', 'order confirmed'),
+    ('Order Processing','order processing'),
+    ('Shipped','shipped'),
+    ('On The Way' ,'on the Way'),
+    ('Delivered','Delivered'),)
+
+class OrderStatus(models.Model):
+    status_id  = models.AutoField(primary_key=True)
+    order_id = models.IntegerField(default="")
+    status_desc = models.CharField(max_length=16, choices=STATUS, default='Order Confirmed')
+    timestamp = models.DateField(auto_now_add=True)
+
+     
     
     

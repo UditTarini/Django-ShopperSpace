@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import product, Contact, Orders
+from .models import product, Contact, Orders, OrderStatus
 from math import ceil
 from django.contrib import messages 
 from django.core.exceptions import ObjectDoesNotExist
@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
+import json
 
 def index(request): 
     allProds = []
@@ -37,8 +38,6 @@ def contact(request):
         contact = Contact(name=name, email=email, phone=phone, desc=desc)
         contact.save()
     return render(request, 'shop/contact.html')
-def tracker(request):
-    return render(request, 'shop/tracker.html')
 def search(request):
     return render(request, 'shop/search.html')
 def productView(request, prodid):
@@ -67,3 +66,22 @@ def checkout(request):
         id = order.order_id
         return render(request, 'shop/checkout.html', {'thank':thank, 'id': id})
     return render(request, 'shop/checkout.html') 
+
+def tracker(request):
+    if request.method=="POST":
+        orderId = request.POST.get('orderId', '')
+        try:
+            order = Orders.objects.filter(order_id=orderId)
+            if len(order)>0:
+                status = OrderStatus.objects.filter(order_id=orderId)
+                updates = []
+                for item in status:
+                    updates.append({'text': item.status_desc, 'time': item.timestamp})
+                    response = json.dumps(updates, default=str)
+                return HttpResponse(response)
+            else:
+                return HttpResponse('{}')
+        except Exception as e:
+            return HttpResponse('{}')
+
+    return render(request, 'shop/tracker.html')    
