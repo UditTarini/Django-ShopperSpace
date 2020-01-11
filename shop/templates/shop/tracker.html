@@ -1,63 +1,221 @@
 {% extends 'shop/basic.html' %}
 {% block title%} tracker {% endblock %}
+
+{% block css %}
+<style>
+    .progressbar {
+        counter-reset: step;
+    }
+
+    .progressbar li {
+        list-style-type: none;
+        width: 20%;
+        float: left;
+        font-size: 12px;
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+        color: #7d7d7d;
+    }
+
+    .progressbar li:before {
+        width: 30px;
+        height: 30px;
+        content: counter(step);
+        counter-increment: step;
+        line-height: 30px;
+        border: 2px solid #7d7d7d;
+        display: block;
+        text-align: center;
+        margin: 0 auto 10px auto;
+        border-radius: 50%;
+        background-color: white;
+    }
+
+    .progressbar li:after {
+        width: 100%;
+        height: 2px;
+        content: '';
+        position: absolute;
+        background-color: #7d7d7d;
+        top: 15px;
+        left: -50%;
+        z-index: -1;
+    }
+
+    .progressbar li:first-child:after {
+        content: none;
+    }
+
+    .progressbar li.active {
+        color: green;
+    }
+
+    .progressbar li.active:before {
+        border-color: #55b776;
+    }
+
+    .progressbar li.active+li:after {
+        background-color: #55b776;
+    }
+</style>
+{% endblock %}
 {% block body %}
 <div class="container">
     <div class="col my-4">
-        <h2>Enter your Order Id  to track your order</h2>
+        <h2 style="font-family: 'Muli', sans-serif;">Enter your Order Id to track your order</h2>
         <form method="post" action="#" id="trackerForm">{% csrf_token %}
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputname">Order Id</label>
                     <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order Id">
                 </div>
-               
-                <button type="submit" class="btn btn-primary">Track Order</button>
+
+                <button style="align:center;font-family: 'PT Sans', sans-serif;font-size: 22px;" type="submit"
+                    class="btn btn-primary">Track Order</button>
             </div>
     </div>
     <div class="col my-4">
-        <h2>Your Order Status</h2>
+        <h2 style="font-family: 'Muli', sans-serif;">Your Order Status</h2>
         <div class="my-4">
-            <ul class="list-group" id="items">
-            	Enter your order Id  and click Track Order to find details about your order!
+            <ul id="items" class="list-group">
+                Enter your order Id and click Track Order to find details about your order!
             </ul>
         </div>
+    </div> 
+    
+    <ul class="progressbar">
+            <li id="Order Confirmed">Confirmed</li>
+            <li id="Order Processing">Processing</liid="Order Confirmed">
+            <li id="Shipped">Shipped</li>
+            <li id="On The Way">On The Way</li>
+            <li id="Delivered">Delivered</li>
+    </ul>
+    <div class="container mt-5"></div>
+
+    <div class="container mt-5 ">
+        <div class="card mt-5">
+            <div class="card-header">
+                Invoice
+                <span class="float-right"> <strong>Status:</strong> Paid</span>
+            </div>
+            <div class="card-body">
+
+
+                <div class="table-responsive-sm">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>Item</th>
+                                <th class="right">Unit Cost</th>
+                                <th class="center">Qty</th>
+                                <th class="right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoice">
+                           
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row">
+                    
+
+                    <div class="col-lg-4 col-sm-5 ml-auto">
+                        <table class="table table-clear">
+                            <tbody>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Subtotal</strong>
+                                    </td>
+                                    <td class="right">$8.497,00</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Discount (20%)</strong>
+                                    </td>
+                                    <td class="right">$1,699,40</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">
+                                        <strong>VAT (10%)</strong>
+                                    </td>
+                                    <td class="right">$679,76</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td class="right">
+                                        <strong>$7.477,36</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     </div>
+
+</div>
 </div>
 {% endblock %}
 {% block js %}
 <script>
-$('#trackerForm').submit(function(event) {
-    $('#items').empty();
-    var formData = {
-        'orderId': $('input[name=orderId]').val(),
-        'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
-    };
-    $.ajax({
-            type: 'POST',
-            url: '/shop/tracker/',
-            data: formData,
-            encode: true
-        })
-        .done(function(data) {
-            console.log(data)
-            updates = JSON.parse(data);
-            if (updates.length > 0 & updates != {}) {
-                for (i = 0; i < updates.length; i++) {
-                    let text = updates[i]['text'];
-                    let time = updates[i]['time'];
+    $('#trackerForm').submit(function (event) {
+        $('#items').empty();
+        var formData = {
+            'orderId': $('input[name=orderId]').val(),
+            'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+        };
+        $.ajax({
+                type: 'POST',
+                url: '/shop/tracker/',
+                data: formData,
+                encode: true
+            })
+            .done(function (data) {
+                
+                data = JSON.parse(data)
+                
+                updates = data[0]
+                if (updates.length > 0 & updates != {}) {
+                    for (i = 0; i < updates.length; i++) {
+                        let text = updates[i]['text'];
+                        let time = updates[i]['time'];
+                        document.getElementById(text).className = 'active';
+
+
+                    }
+                } else {
                     mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
-                    ${text}
-                    <span class="badge badge-primary badge-pill">${time}</span>
-                </li>`
+                    Sorry, We are not able to fetch this order id and email. Make sure to type correct order Id </li>`
                     $('#items').append(mystr);
                 }
-            } else {
-            	mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
-                    Sorry, We are not able to fetch this order id and email. Make sure to type correct order Id and email</li>`
-            	$('#items').append(mystr);
-            }
-        });
-    event.preventDefault();
-});
+        cart = JSON.parse(data[1])        
+        for (item in cart){
+            let qty = cart[item][0]
+            let name = cart[item][1]
+            let price = cart[item][2]
+            let ItemTotPrice = qty * price
+            console.log(name)
+            myhtml = `<tr>
+                               <td class="center">1</td>
+                                <td class="left strong">${name}</td>                               
+                                <td class="right"> &#8377 ${price}</td>
+                                <td class="center">${qty}</td>
+                                <td class="right">${ItemTotPrice}</td>
+                      </tr>
+            `;
+            $('#invoice').append(myhtml);
+           } 
+            });
+        event.preventDefault();
+    });
 </script>
 {% endblock %}
