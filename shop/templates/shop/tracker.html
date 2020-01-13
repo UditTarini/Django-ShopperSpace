@@ -61,43 +61,57 @@
 </style>
 {% endblock %}
 {% block body %}
+<div class="pb-5 ">
+    
+      
+        
 <div class="container">
+ <div class=" mt-5 col-lg-12 p-5 bg-white rounded shadow p-3 mb-5">
     <div class="col my-4">
-        <h2 style="font-family: 'Muli', sans-serif;">Enter your Order Id to track your order</h2>
+         <div  class="border-0 bg-light">
+              <div class="font-weight-bold py-3 px-3 text-uppercase">Order Tracker</div>
+         </div>
+    </div>     
+    <div class="container">  
         <form method="post" action="#" id="trackerForm">{% csrf_token %}
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputname">Order Id</label>
+            <div class="form-row mx-auto w-50 p-3">
+                <div class="form-group  input-group mb-4 ">
                     <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order Id">
-                </div>
-
-                <button style="align:center;font-family: 'PT Sans', sans-serif;font-size: 22px;" type="submit"
-                    class="btn btn-primary">Track Order</button>
+                    <button type="submit" style="font-family: 'PT Sans', sans-serif;font-size: 15px;"
+                       class="btn btn-primary  font-weight-bold ">Track Order</button>
+                </div>            
             </div>
+        </form>    
     </div>
     <div class="col my-4">
-        <h2 style="font-family: 'Muli', sans-serif;">Your Order Status</h2>
-        <div class="my-4">
-            <ul id="items" class="list-group">
-                Enter your order Id and click Track Order to find details about your order!
-            </ul>
+        <div  class="border-0 bg-light">
+             <div class="font-weight-bold py-3 px-3 text-uppercase">Order Status</div>
         </div>
-    </div> 
+   </div>     
+        
     
+    <div class="col my-4">
     <ul class="progressbar">
             <li id="Order Confirmed">Confirmed</li>
-            <li id="Order Processing">Processing</liid="Order Confirmed">
+            <li id="Order Processing">Processing</li>
             <li id="Shipped">Shipped</li>
             <li id="On The Way">On The Way</li>
             <li id="Delivered">Delivered</li>
     </ul>
-    <div class="container mt-5"></div>
+   </div>
+   
+   
+        <div  class="border-0 ">
+             <div class="py-3 px-3 text-uppercase">
+        </div>
+       
 
-    <div class="container mt-5 ">
+    <div class="col my-4 mt-5 " id="invoiceDiv" >
         <div class="card mt-5">
-            <div class="card-header">
-                Invoice
-                <span class="float-right"> <strong>Status:</strong> Paid</span>
+            <div class="card-header  py-3 px-3 ">
+                <span class="font-weight-bold text-uppercase"> Invoice</span>
+                
+                <div class="float-right" > Payment Status:<span id="payStatus"> </span> </div>
             </div>
             <div class="card-body">
 
@@ -115,6 +129,7 @@
                         </thead>
                         <tbody id="invoice">
                            
+                           
                         </tbody>
                     </table>
                 </div>
@@ -123,35 +138,8 @@
                     
 
                     <div class="col-lg-4 col-sm-5 ml-auto">
-                        <table class="table table-clear">
-                            <tbody>
-                                <tr>
-                                    <td class="left">
-                                        <strong>Subtotal</strong>
-                                    </td>
-                                    <td class="right">$8.497,00</td>
-                                </tr>
-                                <tr>
-                                    <td class="left">
-                                        <strong>Discount (20%)</strong>
-                                    </td>
-                                    <td class="right">$1,699,40</td>
-                                </tr>
-                                <tr>
-                                    <td class="left">
-                                        <strong>VAT (10%)</strong>
-                                    </td>
-                                    <td class="right">$679,76</td>
-                                </tr>
-                                <tr>
-                                    <td class="left">
-                                        <strong>Total</strong>
-                                    </td>
-                                    <td class="right">
-                                        <strong>$7.477,36</strong>
-                                    </td>
-                                </tr>
-                            </tbody>
+                        <table id="totPrice" class="table table-clear">
+                           
                         </table>
 
                     </div>
@@ -161,14 +149,17 @@
             </div>
         </div>
     </div>
-
+    </div>
+</div>
+</div>
 </div>
 </div>
 {% endblock %}
 {% block js %}
 <script>
     $('#trackerForm').submit(function (event) {
-        $('#items').empty();
+       console.log("hii")
+       
         var formData = {
             'orderId': $('input[name=orderId]').val(),
             'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
@@ -180,42 +171,83 @@
                 encode: true
             })
             .done(function (data) {
-                
+                $('#invoice').empty();
                 data = JSON.parse(data)
-                
-                updates = data[0]
-                if (updates.length > 0 & updates != {}) {
+                if (data['status']=='success'){
+                    updates= data['updates'];
+                    
                     for (i = 0; i < updates.length; i++) {
                         let text = updates[i]['text'];
                         let time = updates[i]['time'];
                         document.getElementById(text).className = 'active';
-
-
                     }
-                } else {
+                    
+                    cart = JSON.parse(data['jsonItem'])
+                        var subTotPrice = 0
+                        var count = 0
+                        for (item in cart){
+                            let qty = cart[item][0]
+                            let name = cart[item][1]
+                            let price = cart[item][2]
+                            var itemTotPrice = qty * price
+                            count = count + 1
+                            subTotPrice = subTotPrice + itemTotPrice
+                            payStatus = 'paid'
+                            console.log(name)
+                            myhtml = `<tr>
+                                            <td class="center">${count}</td>
+                                                <td class="left strong">${name}</td>                               
+                                                <td class="right"> &#8377 ${price}</td>
+                                                <td class="center">${qty}</td>
+                                                <td class="right"> &#8377 ${itemTotPrice}</td>
+                                    </tr>
+                            `;
+                            $('#invoice').append(myhtml);
+                        }    
+                    
+                    
+                    
+                    delivery = 40
+                    total = subTotPrice + delivery
+                    myhtml = `
+                        <tbody>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Subtotal</strong>
+                                    </td>
+                                    <td class="right">&#8377 ${subTotPrice}</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Delivery</strong>
+                                    </td>
+                                    <td class="right">&#8377 ${delivery} </td>
+                                </tr>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td class="right">
+                                        <strong> &#8377 ${total}</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        `
+                    $('#totPrice').append(myhtml);
+                    
+                }
+                else {
                     mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
                     Sorry, We are not able to fetch this order id and email. Make sure to type correct order Id </li>`
                     $('#items').append(mystr);
                 }
-        cart = JSON.parse(data[1])        
-        for (item in cart){
-            let qty = cart[item][0]
-            let name = cart[item][1]
-            let price = cart[item][2]
-            let ItemTotPrice = qty * price
-            console.log(name)
-            myhtml = `<tr>
-                               <td class="center">1</td>
-                                <td class="left strong">${name}</td>                               
-                                <td class="right"> &#8377 ${price}</td>
-                                <td class="center">${qty}</td>
-                                <td class="right">${ItemTotPrice}</td>
-                      </tr>
-            `;
-            $('#invoice').append(myhtml);
-           } 
+  
             });
         event.preventDefault();
     });
+
+
+// document.getElementById('payStatus').innerHTML = 'paid';
+
 </script>
 {% endblock %}
