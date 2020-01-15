@@ -170,7 +170,9 @@ totalPrice = totPrice + deliveryPrice
 document.getElementById('Price').innerHTML = totPrice;
 document.getElementById('totalPrice').innerHTML = totalPrice;
 document.getElementById('deliveryPrice').innerHTML = deliveryPrice;
+var amountObject = { 'amount': totalPrice };
 
+localStorage.setItem('amountObject', JSON.stringify(amountObject));
 
 $('.trash').click(function(){
     tId = this.id.slice(5, );

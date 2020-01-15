@@ -43,6 +43,7 @@ class Orders(models.Model):
     city = models.CharField(max_length=50)
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100)
+    amount = models.IntegerField(default=0)
 STATUS = (
     ('Order Confirmed', 'order confirmed'),
     ('Order Processing','order processing'),

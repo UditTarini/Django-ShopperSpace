@@ -32,11 +32,11 @@
                     <div class="font-weight-bold py-3 px-3 text-uppercase">Enter Your Address</div>
                 </div>
                 <form method="post" action="/shop/checkout/" class="form-content row" >{% csrf_token %} 
-                <input type="hidden" style="font-family: 'Source Sans Pro', sans-serif;" name="itemsJson" id="itemsJson">
-                
-                    
+                <input type="hidden"  name="itemsJson" id="itemsJson">
+                <input type="hidden" name="amount" id="amount">  
                         <div class="col-md-6">
                             <div class="form-group">
+                     
                                 <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your First Name " value=""/>
                             </div>
                             <div class="form-group">
@@ -90,11 +90,18 @@
 
 {% block js %}
 <script>
+amountObject = JSON.parse(localStorage.getItem('amountObject'));
+totAmount = amountObject["amount"]
+$('#amount').val(totAmount);
 $('#itemsJson').val(JSON.stringify(cart));
 {% if thank %}
   alert('Thanks for ordering with us. Your order is is {{id}}. Use it to track your order using our order tracker');
   localStorage.clear();
   document.location = "/shop";
+
 {% endif %}
+
+
+
 </script>
 {% endblock %}

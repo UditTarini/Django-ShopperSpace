@@ -173,19 +173,19 @@
                 <img class="imgdiv2" src="/media/{{i.image}}" alt="...">
               </div>
           </a>
-          <div style="font-family: 'Muli', sans-serif;" class="prodName">{{i.productName|slice:"0:45"}}...</div>
+          <div style="font-family: 'Muli', sans-serif;" class="prodName">{{i.productName|slice:"0:35"}}...</div>
           <div class="off">50% off</div>
         </div>
       </div>
     </div>
     {% if forloop.counter|divisibleby:6 and forloop.counter > 0 and not forloop.last %}
-  </div>
+  
   <div class="carousel-item">
     {% endif %}
 
     {% endfor %}
   </div>
-</div>
+ </div>
 </div>
 
 {% endfor %}

@@ -1,4 +1,203 @@
 {% extends 'shop/basic.html' %}
+{% block css %}
+<style>
+  .col-md-3 {
+    display: inline-block;
+    margin-left: -4px;
+  }
 
-{% block title%} Title of search{% endblock %}
-{% block body %} This is  search body {% endblock %}
+
+
+  body .carousel-control-prev-icon,
+  body .carousel-control-next-icon {
+    margin-top: 100px ;
+    height: 70px;
+    outline: black;
+    width: 60px;
+    background-size: 100%, 100%;
+    /* border: 1px solid black; */
+    background-image:"shop/static/shop/plain-white-background.jpg";
+    box-shadow: 0 4px 8px 0 rgba(0.3, 0.3, 0.3, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+  }
+  body .carousel-control-prev-icon{
+    border-radius:  0px 10px 10px 0px;
+  }
+  body .carousel-control-next-icon{
+    border-radius:  10px 0px 0px 10px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: auto;
+    bottom: auto;
+    width: 40px;
+    
+    
+  }
+  .carousel-control-next-icon::after
+{
+ 
+  content: '>';
+  font-size: 40px;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 40px;
+  color: black;
+}
+
+  body .no-padding {
+    padding-left: 0,
+
+  }
+
+  .prodName {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 15px;
+  }
+
+  .off {
+    color: #388e3c;
+    padding-top: 8px;
+    white-space: nowrap;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .fleximg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    opacity: 0;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .imgdiv {
+    position: relative;
+    margin: 0 auto;
+    height: 150px;
+    width: 150px;
+
+
+  }
+
+  .cont {
+    height: 280px;
+    text-align: center;
+    padding: 15px;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .carousel-inner {
+
+    height: 280px;
+    align-items: stretch;
+    background-size: cover;
+    display: flex;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .imgdiv2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .dj-slide {
+    width: 200px;
+    /*  added, full width - margin  */
+    flex-shrink: 0;
+    /*  added, so it won't shrink  */
+    /*  added, for demo purpose  */
+    margin: 5px;
+    /*  added, instead of padding on parent  */
+
+    display: flex;
+    /*  added  */
+    align-items: center;
+    /*  added  */
+    justify-content: center;
+    /*  added  */
+
+  }
+
+  .cont:hover {
+    background: #ececec;
+
+  }
+
+
+</style>
+{% endblock %}
+
+{% block body %}
+{% load static %}
+
+{% for product, range, nSlides in allProds %}
+
+
+<h5 style="font-family: 'Noto Sans JP', sans-serif; font-size: 22px;" class="my-4 ml-3  ">{{product.0.category}} </h5>
+<div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+  <div class="carousel-inner ">
+    <a class="carousel-control-prev mr-9 " href="#demo{{forloop.counter}}" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+    <div class="carousel-item active">
+      {% for i in product %}
+      <div class="col-xs-3 col-sm-3 col-md-3 col-xl-2">
+        <div class="dj-slide ">
+          <a href="/shop/product/{{i.id}}">
+            <div class="cont">
+              <div class="imgdiv">
+                <img class="imgdiv2" src="/media/{{i.image}}" alt="...">
+              </div>
+          </a>
+          <div style="font-family: 'Muli', sans-serif;" class="prodName">{{i.productName|slice:"0:45"}}...</div>
+          <div class="off">50% off</div>
+        </div> 
+      </div>
+    </div>
+    {% if forloop.counter|divisibleby:6 and forloop.counter > 0 and not forloop.last %}
+  </div>
+  <div class="carousel-item">
+    {% endif %}
+
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+{% endfor %}
+
+
+{% endblock %}
+
+{% block js %}
+<script>
+{% if msg|length != 0 %}
+alert('{{msg}}');
+window.location.href = "/"
+{% endif %}  
+</script>
+{% endblock %}
