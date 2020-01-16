@@ -13,7 +13,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from paytm import Checksum
 from django.http import HttpResponse
-MERCHANT_KEY = 'MERCHANT KEY'
+MERCHANT_KEY = '8ip9e9t1VehkIz15'
 
 def index(request): 
     allProds = []
@@ -96,14 +96,14 @@ def checkout(request):
         id = order.order_id
         param_dict = {
 
-                'MID': 'MERCHANT ID',
+                'MID': 'AEXcUn49314228600076',
                 'ORDER_ID': str(order.order_id),
                 'TXN_AMOUNT': str(amount),
                 'CUST_ID': email,
                 'INDUSTRY_TYPE_ID': 'Retail',
                 'WEBSITE': 'WEBSTAGING',
                 'CHANNEL_ID': 'WEB',
-                'CALLBACK_URL':'http://127.0.0.1:8000/shop/handlerequest/',
+                'CALLBACK_URL':'http://127.0.0.1:8000/shop/paymentstatus/',
 
         }
         param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)
@@ -123,8 +123,8 @@ def handlerequest(request):
     verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
     if verify:
         if response_dict['RESPCODE'] == '01':
-            print('order successful')
-            thank = True
+            
+           print("order")
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
     return render(request, 'shop/paymentstatus.html', {'response': response_dict})

@@ -5,20 +5,48 @@
     
     <div class="col my-4">
 
-        <h2>Payment status regarding your order Id {{response.ORDERID}}</h2>
+        
         {% if response.RESPCODE == '01' %}
-        ORDER SUCCESS
-        <h5>Amount {{response.TXNAMOUNT}}</h5>
-        <h5>Date {{response.TXNDATE}}</h5>
-        <h5>Transaction Id {{response.TXNID}}</h5>
-
+ 
+       
+        <div class="container text-center ">
+          <div class=" bg-white rounded shadow ">
+             <div class="green_gradient  p-5" >
+                 <p class="display-3 p-2" style="font-size: 50px;">Order Successful</p>
+             </div>
+              
+                <h3 style="font-family: 'Open Sans', sans-serif;" class="pt-5">Thank You </h3>
+                <h3 style="font-family: 'Open Sans', sans-serif;" class="pb-5">for shopping with us !</h3>
+                
+                <p ><strong style="font-family: 'Public Sans', sans-serif;"> Amount :</strong> {{response.TXNAMOUNT}}</p>
+                <p ><strong style="font-family: 'Public Sans', sans-serif;">Date :</strong> {{response.TXNDATE}}</p>
+                <p ><strong style="font-family: 'Public Sans', sans-serif;">Transaction ID :</strong> {{response.TXNID}}</p>
+                <p ><strong style="font-family: 'Public Sans', sans-serif;">Order ID :</strong>  {{response.ORDERID}} (Use this Order ID to track your order) </p>
+              
+                <hr>
+                <p style="font-family: 'Open Sans', sans-serif;" >
+                Having trouble ? <a href="/shop/contact">Contact us</a>
+                </p>
+                
+                <p class=" pb-5">
+                <a style="font-family: 'Open Sans', sans-serif; font-size: 15px;"  class="btn btn-primary btn-sm p-2 px-3 " href="/shop/" role="button">Keep Shopping</a>
+                </p>
+            </div>
+        </div>
         
-        
-        {{response.TXN}}
+       
        
 
         {% else %}
-        ORDER FAILURE
+        <div class="container text-center ">
+            <div class=" bg-white rounded shadow mb-5">
+               <div class="red_gradient  p-5" >
+                   <h2 class="display-3">Order Failed</h2> 
+                </div>
+                <h3 class="p-5">Please try again...</h3>
+
+            </div>
+            </div>
         {% endif%}
 
     </div>
@@ -28,6 +56,8 @@
 
 {% block js %}
 <script>
-
+{% if response.RESPCODE == '01' %}
+  localStorage.clear(); 
+{% endif %}
 </script>
 {% endblock %}
