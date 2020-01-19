@@ -76,21 +76,21 @@
         <form method="post" action="#" id="trackerForm">{% csrf_token %}
             <div class="form-row mx-auto w-50 p-3">
                 <div class="form-group  input-group mb-4 ">
-                    <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order Id">
-                    <button type="submit" style="font-family: 'PT Sans', sans-serif;font-size: 15px;"
-                       class="btn btn-primary  font-weight-bold ">Track Order</button>
+                    <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order ID">
+                    <button type="submit" 
+                      style="font-family: 'PT Sans', sans-serif;font-size: 15px;"
+                       class="btn btn-primary blue_gradient1 text-white  font-weight-bold ">Track Order</button>
                 </div>            
             </div>
         </form>    
     </div>
-    <div class="col my-4">
+    <div class="col my-4" >
         <div  class="border-0 bg-light">
              <div class="font-weight-bold py-3 px-3 text-uppercase">Order Status</div>
         </div>
-   </div>     
+    </div>     
         
-    
-    <div class="col my-4">
+  <div class="col my-4" id="bar" ">
     <ul class="progressbar">
             <li id="Order Confirmed">Confirmed</li>
             <li id="Order Processing">Processing</li>
@@ -172,6 +172,9 @@
             })
             .done(function (data) {
                 $('#invoice').empty();
+                $('#totPrice').empty();
+
+                
                 data = JSON.parse(data)
                 if (data['status']=='success'){
                     updates= data['updates'];
@@ -206,7 +209,7 @@
                         }    
                     
                     
-                    
+                    document.getElementById('payStatus').innerHTML = '  Paid';
                     delivery = 40
                     total = subTotPrice + delivery
                     myhtml = `
@@ -239,7 +242,7 @@
                 else {
                     mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
                     Sorry, We are not able to fetch this order id and email. Make sure to type correct order Id </li>`
-                    $('#items').append(mystr);
+                    $('#bar').append(mystr);
                 }
   
             });
@@ -247,7 +250,7 @@
     });
 
 
-// document.getElementById('payStatus').innerHTML = 'paid';
+ 
 
 </script>
 {% endblock %}
