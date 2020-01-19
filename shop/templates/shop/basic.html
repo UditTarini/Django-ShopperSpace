@@ -27,23 +27,74 @@
     {% block head %} 
     {% endblock %}
     <style>
+      /* Gradient Colors */
       .navbar-aqua{
         background-color: aqua;
       }
       .green_gradient{
-        background-color: #3bb78f;
-        background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+        background-color: #3bb78f;/* fallback for old browsers */
+        background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       }
-      .red_gradient{
-        background: #ED213A;
+      .red_gradient1{
+        background: #ED213A;/* fallback for old browsers */
+        background: linear-gradient(to right, #93291E, #ED213A);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-        background: linear-gradient(to right, #93291E, #ED213A);
+      }
+      .red_gradient2{
+        background: #870000;  /* fallback for old browsers */
+        background: linear-gradient(to left, #190A05, #870000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
       }
-      .blue_gradient{
-        background-color: #2a2a72;
-background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+      .red_gradient3{
+        background: #e52d27;  /* fallback for old browsers */
+        background: linear-gradient(to top, #b31217, #e52d27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
       }
+      .blue_gradient1{
+        background: #1488CC;  /* fallback for old browsers */
+        background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+      }
+      .orange_gradient{
+        background: #FF8008;  /* fallback for old browsers */
+        background: linear-gradient(to bottom, #FFC837, #FF8008); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+      /* Gradient Colors */
+
+
+        .black{
+        background-color: black;
+        }
+
+
+        li {
+            cursor: pointer
+        }
+
+        input::placeholder {
+            vertical-align: middle !important;
+            text-align: center !important;
+            font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important
+        }
+
+
+
+        .row-2 li:first-child {
+            font-size: 18px !important;
+            font-weight: bold;
+            margin-bottom: 20px !important;
+            text-transform: uppercase
+        }
+
+        footer {
+            overflow-x: hidden !important;
+          
+            color: #546E7A !important
+        }
+
+        small {
+            font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important
+        }
     </style>
     {% block css %} 
     <style>
@@ -93,6 +144,80 @@ background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
   </div>
 </nav>
   {% block body %} {% endblock %}
+
+
+  <div class="container-fluid justify-content-center p-0 mx-0 black">
+
+    <footer>     
+        <div class="row mb-0 mt-4 mx-4 row-2 justify-content-xl-around justify-content-sm-between">
+           
+            <div class="col-xs-6 pt-4 px-3 ">
+                <ul class="list-unstyled text-white">
+                    <li class="mt-md-0 text-secondary text-white ">Help</li>
+                    <li>Your Account </li>
+                    <li>Payments </li>
+                    <li>Refund</li>
+                    <li>Cancellation</li>
+                    <li>Shipping</li>
+                    <li>FAQ</li>
+                    <li>Report</li>
+
+                </ul>
+            </div>
+            
+            <div class="col-xs-6 pt-4 px-3 ">
+                <ul class="list-unstyled text-white">
+                    <li class="mt-md-0 text-secondary">ABOUT</li>
+                    <li>Contact Us</li>
+                    <li>About Us</li>
+                    <li>Careers</li>
+                    <li>ShopperSpace Stories</li>
+                </ul>
+            </div>
+
+            <div class="col-xs-6 pt-4 px-3 ">
+                <ul class="list-unstyled text-white">
+                    <li class="mt-md-0 text-secondary ">policy</li>
+                    <li>Return Policy </li>
+                    <li>Terms Of Use</li>
+                    <li>Security </li>
+                    <li>Privacy</li>
+                    <li>Sitemap </li>
+                </ul>
+            </div>
+            <div class="col-xs-6 pt-4 px-3">
+                <ul class="list-unstyled text-white">
+                    <li class="mt-md-0 text-secondary ">social</li>
+                    <li>Facebook </li>
+                    <li>Twitter</li>
+                    <li>YouTube </li>
+                    <li>Instagram</li>
+                    <li>Linkedin </li>
+                </ul>
+            </div>
+
+            <div class="col-xl-auto text-left col-lg-4 col-md-4 col-sm-6 col-12 pt-4 my-sm-0 order-6 my-auto">
+                <div class="input-group-lg input-group mb-3 mt-md-0 mt-4"><input type="text" class="form-control" placeholder="E-mail address" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <div class="input-group-append "><button class="btn btn-success" type="button" id="button-addon2"> <b>Join</b></button></div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="row justify-content-lg-around mx-xl-5 mx-lg-4 mx-3 py-3">
+            <div class="col order-1 align-self-center">
+                <p class="mb-0 text-uppercase">we're accountable for seven days a week, 24 hours a day</p><small>Contact Number : 789-421-3600 <br> Email Address:Support@ShopperSpace.com </small>
+            </div>
+
+        </div>
+      
+        <div style="border-top: 1px solid gray;" class="row text-center py-3">
+            <div class="col text-secondary">
+              <div style="font-family: 'Sofia'; font-size: 17px;"  href="/shop/">ShopperSpace</div>
+            </div>
+        </div>
+    </footer>
+</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
