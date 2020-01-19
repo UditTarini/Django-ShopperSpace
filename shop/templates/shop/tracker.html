@@ -89,8 +89,9 @@
              <div class="font-weight-bold py-3 px-3 text-uppercase">Order Status</div>
         </div>
     </div>     
-        
-  <div class="col my-4" id="bar" ">
+       
+  <div class="col my-4" id="bar" style="display: none;">
+    
     <ul class="progressbar">
             <li id="Order Confirmed">Confirmed</li>
             <li id="Order Processing">Processing</li>
@@ -101,12 +102,15 @@
    </div>
    
    
-        <div  class="border-0 ">
+        <div  class="border-0">
              <div class="py-3 px-3 text-uppercase">
         </div>
+        <div id="fail" class="border-0">
+            
+       </div>
        
 
-    <div class="col my-4 mt-5 " id="invoiceDiv" >
+    <div class="col my-4 mt-5 " id="invoiceDiv" style="display: none;" >
         <div class="card mt-5">
             <div class="card-header  py-3 px-3 ">
                 <span class="font-weight-bold text-uppercase"> Invoice</span>
@@ -158,7 +162,7 @@
 {% block js %}
 <script>
     $('#trackerForm').submit(function (event) {
-       console.log("hii")
+     
        
         var formData = {
             'orderId': $('input[name=orderId]').val(),
@@ -173,10 +177,16 @@
             .done(function (data) {
                 $('#invoice').empty();
                 $('#totPrice').empty();
+                $('#fail').empty();
+                document.getElementById("bar").style.display = "none";
+                    document.getElementById("invoiceDiv").style.display = "none";
+
 
                 
                 data = JSON.parse(data)
                 if (data['status']=='success'){
+                    document.getElementById("bar").style.display = "block";
+                    document.getElementById("invoiceDiv").style.display = "block";
                     updates= data['updates'];
                     
                     for (i = 0; i < updates.length; i++) {
@@ -240,9 +250,16 @@
                     
                 }
                 else {
-                    mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
-                    Sorry, We are not able to fetch this order id and email. Make sure to type correct order Id </li>`
-                    $('#bar').append(mystr);
+                    
+                    mystr = `           
+                     <div class=" bg-white rounded shadow mb-5">
+                 <div class=" red_gradient1  p-5" >
+                   <h4 class="display-3">Sorry !</h4> 
+                </div>
+                <h3 class="p-5"> Unable to fetch your order status. Make sure to type correct order Id</h3>
+
+                   </div>`
+                    $('#fail').append(mystr);
                 }
   
             });
