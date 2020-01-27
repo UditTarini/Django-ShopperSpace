@@ -23,89 +23,20 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">    
     <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+   
+    {% load static %}
+
+    <link href="{% static 'shop/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'shop/css/style.css' %}" rel="stylesheet">
+  
+    
+    
     <title>{% block title%} {% endblock %}</title>
-    {% block head %} 
-    {% endblock %}
-    <style>
-      /* Gradient Colors */
-      .navbar-aqua{
-        background-color: aqua;
-      }
-      .green_gradient{
-        background-color: #3bb78f;/* fallback for old browsers */
-        background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      }
-      .green_gradient2{
-        background: #52c234;  /* fallback for old browsers */
-       
-        background: linear-gradient(to bottom, #6add4b, #3c9d1b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-      }
-      .red_gradient1{
-        background: #ED213A;/* fallback for old browsers */
-        background: linear-gradient(to right, #93291E, #ED213A);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-      }
-      .red_gradient2{
-        background: #870000;  /* fallback for old browsers */
-        background: linear-gradient(to left, #190A05, #870000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-      }
-      .red_gradient3{
-        background: #e52d27;  /* fallback for old browsers */
-        background: linear-gradient(to top, #b31217, #e52d27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-      }
-      .blue_gradient1{
-        background: #1488CC;  /* fallback for old browsers */
-        background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-      }
-      .orange_gradient{
-        background: #FF8008;  /* fallback for old browsers */
-        background: linear-gradient(to bottom, #FFC837, #FF8008); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      }
-      /* Gradient Colors */
-
-
-        .black{
-        background-color: black;
-        }
-
-
-        li {
-            cursor: pointer
-        }
-
-        input::placeholder {
+    
+    {% block head %}  {% endblock %}
  
-            font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important
-        }
 
-
-
-        .row-2 li:first-child {
-            font-size: 18px !important;
-            font-weight: bold;
-            margin-bottom: 20px !important;
-            text-transform: uppercase
-        }
-
-        footer {
-            overflow-x: hidden !important;
-          
-            color: #546E7A !important
-        }
-
-        small {
-            font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important
-        }
-    </style>
-
-    {% block css %} 
-    <style>
-    </style>
-    {% endblock %}
+    {% block css %} {% endblock %}
      
   </head>
 
