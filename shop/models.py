@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from datetime import datetime 
 from django.shortcuts import reverse
+from django.db.models.signals import pre_save
+from django.utils.text import slugify
 
 # Create your models here.
 class product(models.Model):
@@ -13,11 +15,16 @@ class product(models.Model):
     price = models.IntegerField(default=0)
     category = models.CharField(max_length=50,default="")
     subCatagory = models.CharField(max_length=50,default="")
+    slug = models.SlugField(max_length=100,null=True,blank=True,unique=False)
 
     def __str__(self):
         return self.productName
 
+def slug_generator(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.category)
 
+pre_save.connect(slug_generator, sender=product)     
 
 class Contact(models.Model):
     msg_id = models.AutoField(primary_key=True)

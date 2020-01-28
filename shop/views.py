@@ -19,6 +19,12 @@ MERCHANT_KEY = 'm key'
 def home(request):
     return render(request, 'shop/home.html')
 
+def catagoryView(request, cat):
+
+    prod = product.objects.filter(slug=cat)
+    params = {'products':prod}
+    return render(request, 'shop/catagoryview.html',params)
+
 def index(request): 
     allProds = []
     catprods = product.objects.values('category', 'id')

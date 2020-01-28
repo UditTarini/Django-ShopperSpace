@@ -1,0 +1,59 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} catagory view{% endblock %}
+
+{% block head %} 
+
+
+{% endblock %}
+
+{% block body %} 
+
+
+
+<div class="container">
+
+    
+    <div class="row mt-5">
+        {% for i in products %}
+        <div class="product-grid ">
+        <div class="">
+            
+                <div class="product-image3">
+                    
+                    <a href="#">
+                        
+                        <div class="imgdiv">
+                        <img class=" imgdiv2" src="/media/{{i.image}}">
+                       
+                        </div>
+                    </a>
+                    <ul class="social">
+                        <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                    <!-- <span class="product-new-label">New</span> -->
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">{{i.productName|slice:"0:20"}}...</a></h3>
+                    <div class="price">
+                        $63.50
+                        <span>$75.00</span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<hr>
+
+
+{% endblock %}
+
+{% block js %} 
+
+
+{% endblock %}
+

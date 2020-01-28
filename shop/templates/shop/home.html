@@ -13,7 +13,7 @@
     <div class="carousel-inner " style="  font-family: 'Josefin Sans', 'sans-serif'; ">
 
         <div id="1i" class="carousel-item active  " >
-            <img  src="/media/shop/images/carausel/bg-2.jpg" alt="First slide">
+            <img  src="/media/shop/images/carousel/bg-2.jpg" alt="First slide">
             <div class="container col-xl-6 col-lg-6 col-md-6 col-xs-6 pd-5 d-flex justify-content-center carousel-caption d-none d-md-block">
               
                 <h1 class=" font-weight-bold mb-3" >GET A NEW LOOK</h1>
@@ -21,7 +21,7 @@
              </div>
         </div>     
         <div id="2i" class="carousel-item  ">
-            <img class="d-block w-100 img-responsive " src="/media/shop/images/carausel/Air-jordan.jpg" alt="Second slide">
+            <img class="d-block w-100 img-responsive " src="/media/shop/images/carousel/Air-jordan.jpg" alt="Second slide">
             <div class="container col-xl-6 col-lg-6 col-xs-6 col-md-6 pd-5 d-flex justify-content-center carousel-caption d-none d-md-block">
               
                 <h1 class=" font-weight-bold mb-3 " >WALK WITH STYLE</h1>
@@ -29,7 +29,7 @@
              </div>       
         </div>
         <div id="3i" class="carousel-item Right ">
-            <img class="d-block w-100 img-responsive" src="/media/shop/images/carausel/audioquest.jpg" alt="Third slide">
+            <img class="d-block w-100 img-responsive" src="/media/shop/images/carousel/audioquest.jpg" alt="Third slide">
             <div class="container col-xl-6 col-lg-6 col-xs-6 col-md-6 pd-5 d-flex justify-content-center carousel-caption d-none d-md-block">
               
                 <h1 class=" font-weight-bold mb-3" >FEEL THE BEATS</h1>
@@ -484,42 +484,11 @@ data-top-bottom="background-position: 0 20px">
     </div>
 </section>
 
-<!-- <div class="newsletter">
-    <div class="newsletter_content">
-        <div class="newsletter_image"></div>
-         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="section_title_container text-center">
-                        <div class="section_subtitle">only the best</div>
-                        <div class="section_title">subscribe for a 20% discount</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row newsletter_container">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="newsletter_form_container mt-5">
-                        <form method="post" action="#" id="trackerForm">{% csrf_token %}
-                            <div class="form-row mx-auto w-100 p-3">
-                                <div class="form-group  input-group mb-4 ">
-                                    <input  type="text" class="form-control" id="orderId" name=" orderId" 
-                                    placeholder="E-mail"/>
-                                    <button type="submit" style="font-family: 'PT Sans', sans-serif;font-size: 15px;"
-                                       class="btn btn-primary  font-weight-bold ">Subscribe</button>
-                                </div>            
-                            </div>
-                        </form>
-                    </div>
-                    <div class="newsletter_text">Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestib ulum ultrices nulla. Aliquam egestas tempor leo.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+
 <div class="newsletter mb-5 mt-5">
     <div class="row">
         <div class="newsletter_image" style="background-image:url(/media/shop/images/img/subscribe.jpg)">
-       
+         <div class="newsletter-layer" > 
           
             <div class="container">
 				<div class="row">
@@ -549,7 +518,7 @@ data-top-bottom="background-position: 0 20px">
 				</div>
 			</div>
           
-          
+        </div>
     </div>
          </div>    
  </div>
@@ -572,7 +541,7 @@ data-top-bottom="background-position: 0 20px">
         dots:true,
         autoplay:true,
         
-        autoplayTimeout:1000,
+        autoplayTimeout:3000,
         autoplayHoverPause: true,
         responsive:{
             0:{
