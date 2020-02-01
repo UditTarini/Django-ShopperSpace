@@ -139,218 +139,51 @@
 </div>
 
 
-<section class="filter" 
-style="  font-family: 'Josefin Sans', 'sans-serif';">
-<div class="container mt-5 ">
-
-    <div class="heading  ">
+<section class="product show">
+    <div class="container mt-5 ">
+    <div class="heading  " style="  font-family: 'Josefin Sans', 'sans-serif';">
         <h2 class="font-weight-bold" >BROWSE TOP  SELLING <span class="theme-color">PRODUCTS</span></h2>
     </div>
-    <ul class="product-filter-menu mt-5" >
-        <li><a href="#">CAP</a></li>
-        <li><a href="#">SMARTPHONE</a></li>
-        <li><a href="#">SPEAKER</a></li>
-        <li><a href="#">CLOTHES</a></li>
-        <li><a href="#">HEAD PHONE</a></li>
-        <li><a href="#">LAPTOP</a></li>
-        
-        <li><a href="#">SHOES</a></li>
-    </ul>
-</div>
-</section>
 
-<section class="product show">
-    <div class="container mt-5">
-        
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="product-grid">
-                    <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-1.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-2.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                        <span class="product-new-label">New</span>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Men's Blazer</a></h3>
-                        <div class="price">
-                            $63.50
-                            <span>$75.00</span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="product-grid">
-                    <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-3.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-4.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Women's Designer Top</a></h3>
-                        <div class="price">
-                            $43.50
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="product-grid">
-                    <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-5.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-6.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                        <span class="product-new-label">New</span>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Men's Blazer</a></h3>
-                        <div class="price">
-                            $63.50
-                            <span>$75.00</span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="product-grid">
-                    <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-7.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-8.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                        <span class="product-new-label">New</span>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Men's Blazer</a></h3>
-                        <div class="price">
-                            $63.50
-                            <span>$75.00</span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        <div class="row owl-carousel owl-theme" id="owl-demo3">
 
-<section class="product show">
-    <div class="container mt-5">
-        
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="product-grid">
+            {% for i in trendProducts %}
+            <div class="product-grid lg-mx-2  ">
                     <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-1.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-2.jpg">
+                        
+                        <a href="/shop/product/{{i.id}}">
+                            
+                            <div class="imgdiv">
+                            <img id="imagepr{{i.id}}" class=" imgdiv2" src="/media/{{i.image}}">
+                           
+                            </div>
                         </a>
                         <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li>
+                             <span id="divpr{{i.id}}" class="divpr">
+                                <a href="/shop/cart"><i id="pr{{i.id}}" class="fa fa-shopping-bag cart"></i></a>
+                               </span>
+                            </li>
+                            <li>
+                                <span id="divpr{{i.id}}" class="divpr">
+                                <a href=""><i id="pr{{i.id}}" class="fa fa-shopping-cart cart"></i></a>
+                               </span>
+                            </li>
                         </ul>
-                        <span class="product-new-label">New</span>
+                    
                     </div>
                     <div class="product-content">
-                        <h3 class="title"><a href="#">Men's Blazer</a></h3>
-                        <div class="price">
-                            $63.50
-                            <span>$75.00</span>
+                        <h3 id="namepr{{i.id}}" class="title">{{i.productName|slice:"0:20"}}...</h3>
+                        <div class="price" id="pricepr{{i.id}}"> {{i.price}}
+                            
                         </div>
+                        <span type="hidden" id="catagorypr{{i.id}}" >{{prodView.category}}</span>
                         
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="product-grid">
-                    <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-3.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-4.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Women's Designer Top</a></h3>
-                        <div class="price">
-                            $43.50
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="product-grid">
-                    <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-5.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-6.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                        <span class="product-new-label">New</span>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Men's Blazer</a></h3>
-                        <div class="price">
-                            $63.50
-                            <span>$75.00</span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="product-grid">
-                    <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-7.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-8.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                        <span class="product-new-label">New</span>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Men's Blazer</a></h3>
-                        <div class="price">
-                            $63.50
-                            <span>$75.00</span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+            </div>   
+            {% endfor %}
         </div>
-    </div>
+    </div> 
 </section>
 
 <section class="offer mt-5" id="parallax-1" 
@@ -373,117 +206,44 @@ data-top-bottom="background-position: 0 20px">
     </div>
   </section>
 
-  <section class="product show mt-5">
+  <section class="product show">
     <div class="container mt-5 ">
-        <div class="section-title   " style="  font-family: 'Josefin Sans', 'sans-serif';">
-        <h2 class="font-weight-bold" > NEW <span class="theme-color"> ARIVALS</span>  </h2>
+    <div class="heading  " style="  font-family: 'Josefin Sans', 'sans-serif';">
+        <h2 class="font-weight-bold" >NEW <span class="theme-color">ARIVALS</span></h2>
     </div>
-        <div class="row owl-carousel owl-theme" id="owl-demo">
 
-            <div class="  item">
-                <div class="product-grid ">
-                    <div class="product-image3 ">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-1.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-2.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                        <span class="product-new-label">New</span>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Men's Blazer</a></h3>
-                        <div class="price">
-                            $63.50
-                            <span>$75.00</span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="  item">
-                <div class="product-grid ">
-                    <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-3.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-4.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Women's Designer Top</a></h3>
-                        <div class="price">
-                            $43.50
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="  item">
-                <div class="product-grid ">
-                    <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-5.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-6.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                        <span class="product-new-label">New</span>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Men's Blazer</a></h3>
-                        <div class="price">
-                            $63.50
-                            <span>$75.00</span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="  item">
-                <div class="product-grid ">
-                    <div class="product-image3">
-                        <a href="#">
-                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-7.jpg">
-                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-8.jpg">
-                        </a>
-                        <ul class="social">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                        <span class="product-new-label">New</span>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">Men's Blazer</a></h3>
-                        <div class="price">
-                            $63.50
-                            <span>$75.00</span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            
+        <div class="row owl-carousel owl-theme" id="owl-demo2">
 
-            
+            {% for i in newProducts %}
+            <div class="product-grid lg-mx-2  ">
+                    <div class="product-image3">
+                        
+                        <a href="/shop/product/{{i.id}}">
+                            
+                            <div class="imgdiv">
+                            <img class=" imgdiv2" src="/media/{{i.image}}">
+                           
+                            </div>
+                        </a>
+                        <ul class="social">
+                            <li><a href="/shop/cart"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                        <!-- <span class="product-new-label">New</span> -->
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="#">{{i.productName|slice:"0:20"}}...</a></h3>
+                        <div class="price">
+                            {{i.price}}
+                            <span>$75.00</span>
+                        </div>
+                        
+                    </div>
+            </div>   
+            {% endfor %}
         </div>
-        <div class="slider_nav">
-            <button class="am-next">
-                <i class="flaticon-left-arrow-1"></i>
-            </button>
-            <button class="am-prev">
-                <i class="flaticon-right-arrow-1"></i>
-            </button>
-        </div>
-    </div>
+    </div> 
 </section>
-
 
 <div class="newsletter mb-5 mt-5">
     <div class="row">
@@ -534,7 +294,10 @@ data-top-bottom="background-position: 0 20px">
 {% block js %}
 
 <script>
-        $('#owl-1').owlCarousel({
+
+$(document).ready(function() {
+
+    $('#owl-1').owlCarousel({
         loop:true,
         margin:10,
         nav:true,
@@ -576,45 +339,120 @@ data-top-bottom="background-position: 0 20px">
         }
     })
 
-    $('.customNextBtn').click(function() {
-    owl.trigger('next.owl.carousel');
-  });
-  $('.customPreviousBtn').click(function() {
-    owl.trigger('prev.owl.carousel');
-  });
+ 
   
-
-
-    const par = document.getElementsByclassName("newsletter_image");
-    window.addEventListener("scroll", function()
-    {
-        let offset = window.pageYOffset;
-        par.style.backgroundPositionY= offset * 0.7 + 'px'
+  $('#owl-demo2').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        dots:true,
+        navText: [$('.am-next'),$('.am-prev')],
+        autoplayHoverPause: true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
+        }
     })
 
 
-    function doAnimation(id, animName, duration, delay)
-    {
-    var el = document.getElementsByclassName(id);
-    var timer;
-    function addclass() {
-        el.classList.add(animName);
+  $('#owl-demo3').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        dots:true,
+        navText: [$('.am-next'),$('.am-prev')],
+        autoplayHoverPause: true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
+        }
+    })
+
+
+//     const par = document.getElementsByclassName("newsletter_image");
+//     window.addEventListener("scroll", function()
+//     {
+//         let offset = window.pageYOffset;
+//         par.style.backgroundPositionY= offset * 0.7 + 'px'
+//     })
+
+
+//     function doAnimation(id, animName, duration, delay)
+//     {
+//     var el = document.getElementsByclassName(id);
+//     var timer;
+//     function addclass() {
+//         el.classList.add(animName);
+//     }
+//     function removeclass() {
+//         el.classList.remove(animName);
+//     }
+//     setInterval(function () {
+//         clearTimeout(timer);
+//         addclass();
+//         timer = setTimeout(removeclass, duration);
+//     }, duration + delay);
+//    }
+//    doAnimation('section_title', 'fadeIn', 1000, 4000);
+
+
+console.log('working')
+  if(localStorage.getItem('cart')==null){
+    var cart = {};
+  }
+  else
+  {
+    cart =JSON.parse(localStorage.getItem('cart'))
+    updateCart(cart);
+  }  
+  
+  $('.cart').click(function(){
+    var idstr = this.id.toString();
+
+    if (cart[idstr] != undefined) {
+        qty = cart[idstr][0] + 1;
+       
+        
+    } else {
+        
+        qty = 1;
+        name = document.getElementById('name'+idstr).innerHTML;
+        price = document.getElementById('price'+idstr).innerHTML;
+        image = document.getElementById('image'+idstr).getAttribute("src");
+        console.log(image);
+        catagory = document.getElementById('catagory'+idstr).innerHTML;
+        cart[idstr] = [qty, name, parseInt(price), image, catagory ];
     }
-    function removeclass() {
-        el.classList.remove(animName);
-    }
-    setInterval(function () {
-        clearTimeout(timer);
-        addclass();
-        timer = setTimeout(removeclass, duration);
-    }, duration + delay);
-   }
-
-   doAnimation('section_title', 'fadeIn', 1000, 4000);
-
-   
+    updateCart(cart);
+     });
 
 
+
+    function updateCart(cart) {
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+  
+    console.log(cart);
+  
+}
+
+
+
+});
    
 </script>
 

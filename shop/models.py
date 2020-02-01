@@ -6,6 +6,12 @@ from django.db.models.signals import pre_save
 from django.utils.text import slugify
 
 # Create your models here.
+
+LABEL = (
+    ('Trending', 'Trending'),
+    ('New','New'),
+    ('50%','50%'),
+    )
 class product(models.Model):
     productId = models.AutoField
     productName = models.CharField(max_length=50)
@@ -15,6 +21,7 @@ class product(models.Model):
     price = models.IntegerField(default=0)
     category = models.CharField(max_length=50,default="")
     subCatagory = models.CharField(max_length=50,default="")
+    label = models.CharField(max_length=16, choices=LABEL, default='New')
     slug = models.SlugField(max_length=100,null=True,blank=True,unique=False)
 
     def __str__(self):
@@ -51,6 +58,7 @@ class Orders(models.Model):
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100)
     amount = models.IntegerField(default=0)
+
 STATUS = (
     ('Order Confirmed', 'order confirmed'),
     ('Order Processing','order processing'),

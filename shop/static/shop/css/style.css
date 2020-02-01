@@ -535,7 +535,7 @@ background-position: 50% 50%;
     padding-bottom: 15px;
     box-sizing: border-box;
 }
-.product-filter-menu li  a{
+.product-filter-menu li button {
     color: #111;
     font-size: 12px;
     font-weight: 700;

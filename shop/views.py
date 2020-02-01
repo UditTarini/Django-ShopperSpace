@@ -17,7 +17,15 @@ MERCHANT_KEY = 'm key'
 
 
 def home(request):
-    return render(request, 'shop/home.html')
+      trendProd = product.objects.filter(label="Trending")
+      newProd = product.objects.filter(label="New")
+     
+      params = {'trendProducts':trendProd, 'newProducts' :newProd }
+    
+      return render(request, 'shop/home.html',params)
+   
+
+
 
 def catagoryView(request, cat):
 

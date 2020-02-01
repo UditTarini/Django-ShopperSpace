@@ -148,9 +148,11 @@
        
         
     } else {
+      
         qty = 1;
         name = document.getElementById('name'+idstr).innerHTML;
         price = document.getElementById('price'+idstr).innerHTML;
+        
         image = $('.imgdiv img').attr('src');
         catagory = document.getElementById('catagory'+idstr).innerHTML;
         cart[idstr] = [qty, name, parseInt(price), image, catagory ];
