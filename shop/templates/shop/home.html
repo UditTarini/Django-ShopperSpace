@@ -80,61 +80,78 @@
 </section>
 
 <div class="row catagories-slider owl-carousel mt-5" id="owl-1">
+    
     <div class="col-lg-4">
-        <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-1.jpg);">
+
+       <a href="/head-phone" > 
+           <div   class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-1.jpg);">
             <div class="si-text">
-                <h4>Head Phone</h4>
-                
+                <h4>Head Phone</h4>  
             </div>
         </div>
+      </a>
+      <a href="/shoes" >  
         <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-4.jpg);">
             <div class="si-text">
                 <h4>Shoes</h4>
                 
             </div>
         </div>
+    </a>
     </div>
     <div class="col-lg-4">
+        <a href="/smart-phone" > 
         <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-2.jpg);">
             <div class="si-text">
                 <h4>Smart Phone</h4>
                 
             </div>
         </div>
+        </a>
+        <a href="/cap" > 
         <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-5.jpg);">
             <div class="si-text">
                 <h4>Cap</h4>
                 
             </div>
         </div>
+        </a>
     </div>
     <div class="col-lg-4">
+        <a href="/laptop" > 
         <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-3.jpg);">
             <div class="si-text">
                 <h4>Laptop</h4>
                 
             </div>
         </div>
+        </a>
+        <a href="/clothes" > 
         <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-6.jpg);">
             <div class="si-text">
                 <h4>Clothes</h4>
                 
             </div>
         </div>
+        </a>
     </div>
     <div class="col-lg-4">
+        <a href="/home-decors" > 
         <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-7.jpg);">
             <div class="si-text">
                 <h4>Home Decors</h4>
                
             </div>
         </div>
+        </a>
+        <a href="/wrist-watch" > 
         <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-8.jpg);">
             <div class="si-text">
                 <h4>Wrist Watch</h4>
                 
             </div>
         </div>
+        </a>
     </div>
 </div>
 
@@ -154,7 +171,7 @@
                         <a href="/shop/product/{{i.id}}">
                             
                             <div class="imgdiv">
-                            <img id="imagepr{{i.id}}" class=" imgdiv2" src="/media/{{i.image}}">
+                            <img id="imagepr{{i.id}}" class=" imgdiv2" src={{i.image}}>
                            
                             </div>
                         </a>
@@ -174,7 +191,7 @@
                     </div>
                     <div class="product-content">
                         <h3 id="namepr{{i.id}}" class="title">{{i.productName|slice:"0:20"}}...</h3>
-                        <div class="price" id="pricepr{{i.id}}"> {{i.price}}
+                        <div class="price" id="pricepr{{i.id}}">&#8377 {{i.price}}
                             
                         </div>
                         <span type="hidden" id="catagorypr{{i.id}}" >{{prodView.category}}</span>
@@ -216,30 +233,38 @@ data-top-bottom="background-position: 0 20px">
 
             {% for i in newProducts %}
             <div class="product-grid lg-mx-2  ">
-                    <div class="product-image3">
+                <div class="product-image3">
+                    
+                    <a href="/shop/product/{{i.id}}">
                         
-                        <a href="/shop/product/{{i.id}}">
-                            
-                            <div class="imgdiv">
-                            <img class=" imgdiv2" src="/media/{{i.image}}">
-                           
-                            </div>
-                        </a>
-                        <ul class="social">
-                            <li><a href="/shop/cart"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                        <!-- <span class="product-new-label">New</span> -->
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">{{i.productName|slice:"0:20"}}...</a></h3>
-                        <div class="price">
-                            {{i.price}}
-                            <span>$75.00</span>
+                        <div class="imgdiv">
+                        <img id="imagepr{{i.id}}" class=" imgdiv2" src="{{i.image}}">
+                       
                         </div>
+                    </a>
+                    <ul class="social">
+                        <li>
+                         <span id="divpr{{i.id}}" class="divpr">
+                            <a href="/shop/cart"><i id="pr{{i.id}}" class="fa fa-shopping-bag cart"></i></a>
+                           </span>
+                        </li>
+                        <li>
+                            <span id="divpr{{i.id}}" class="divpr">
+                            <a href=""><i id="pr{{i.id}}" class="fa fa-shopping-cart cart"></i></a>
+                           </span>
+                        </li>
+                    </ul>
+                
+                </div>
+                <div class="product-content">
+                    <h3 id="namepr{{i.id}}" class="title">{{i.productName|slice:"0:20"}}...</h3>
+                    <div class="price" id="pricepr{{i.id}}">&#8377 {{i.price}}
                         
                     </div>
-            </div>   
+                    <span type="hidden" id="catagorypr{{i.id}}" >{{prodView.category}}</span>
+                    
+                </div>
+        </div>   
             {% endfor %}
         </div>
     </div> 
