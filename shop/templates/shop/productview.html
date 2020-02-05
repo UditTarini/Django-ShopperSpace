@@ -26,26 +26,9 @@
   
     <!-- Portfolio Item Row -->
     <div class="row">
-        <div class="col-md-5">
-        <div class="imgdiv">
-        <img id="imagepr{{i}}" class="imgdiv2" src={{prodView.image}} alt="">
-      </div>
-      
-       <form style="align-content: center;" class="d-flex .flex-row mt-5 ">
-          <!-- Default input -->
-          <div style="align:center;font-family: 'PT Sans', sans-serif;font-size: 22px;">
-          
-            <span id="divpr{{i}}" class="divpr">
-              <a href="/shop/cart"> <button type="button" id="pr{{i}}"  class="btn btn-danger align_middle red_gradient3 btn-lg cart">Buy Now</button></a>
-            </span>
-          
-            <span id="divpr{{i}}" class="divpr">
-               <a href=""><button type="button" id="pr{{i}}" class="btn btn-primary btn-lg blue_gradient1 cart">Add to Cart</button></a>
-           </span>
-        </div>
-      </form>
-      
-      </div>
+      <div class="col-md-5" style="flex-flow: column;">
+          <img id="imagepr{{i}}" class="imgdiv2" src={{prodView.image}} alt="">
+    </div>
   
       <div class="col-md-7">
         <div class="col-md-12 mb-4">
@@ -89,6 +72,21 @@
         </div></div>
   
     </div>
+    <form style="justify-content: center;" class="d-flex .flex-row   col-md-5">
+      <!-- Default input -->
+    <div style="align:center;font-family: 'PT Sans', sans-serif;font-size: 22px;">
+      
+        <span id="divpr{{i}}" class="divpr ">
+          <a href="/shop/cart"> <button type="button .btn-lg" id="pr{{i}}"  
+            class="btn btn-danger  red_gradient3 btn-lg cart">Buy Now</button></a>
+        </span>
+      
+        <span id="divpr{{i}}" class="divpr">
+           <a href=""><button type="button" id="pr{{i}}" 
+            class="btn btn-primary btn-lg  blue_gradient1 cart">Add to Cart</button></a>
+       </span>
+    </div>
+  </form>
     <!-- /.row -->
   
     <!-- Related Projects Row -->

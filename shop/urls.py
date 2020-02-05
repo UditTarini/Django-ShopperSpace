@@ -3,10 +3,9 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='ShopHome'),
-   
-
+    path('home/', views.home, name='home'),
+    path('shop/', views.home, name='home'),
     path('view/', views.index, name='view'),
-
     path('about/', views.about, name='AboutUs'),
     path('contact/', views.contact, name='ContactUs'),
     path('tracker/', views.tracker, name='TrackingStaus'),
@@ -16,6 +15,6 @@ urlpatterns = [
     path('cart/', views.cart, name='Cart'),
     path("paymentstatus/", views.handlerequest, name="PaymentStatus"),
     path('<slug:cat>/', views.catagoryView, name='catagoryView'),
-    path('home/', views.home, name='home'),
+    
 
 ]

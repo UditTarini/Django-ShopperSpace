@@ -12,13 +12,17 @@ LABEL = (
     ('New','New'),
     ('50%','50%'),
     )
+
+    
 class product(models.Model):
+
     productId = models.AutoField
     productName = models.CharField(max_length=100)
     desc = models.CharField(max_length=300)
     publishDate = models.DateField()
     image = models.CharField(max_length=800)
-    price = models.IntegerField(default=0)
+    price = models.CharField(max_length=15)
+    oldPrice = models.CharField(max_length=15, blank=True)
     category = models.CharField(max_length=50,default="")
     subCatagory = models.CharField(max_length=50,default="")
     label = models.CharField(max_length=16, choices=LABEL, default='New')
