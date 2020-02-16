@@ -87,9 +87,12 @@ def search(request):
         params = {'msg': "Please enter a valid search query"}
     return render(request, 'shop/search.html', params)
 
-def productView(request, prodid):
+def productView(request, prodid, cat):
     prodView = product.objects.filter(id=prodid)
-    return render(request, 'shop/productview.html', {'prodView':prodView[0], 'i':prodid})
+     
+    relatedProd = product.objects.filter(slug=cat)
+
+    return render(request, 'shop/productview.html', {'prodView':prodView[0], 'i':prodid, 'relatedProd':relatedProd })
 
 def checkout(request):
     if request.method=="POST":

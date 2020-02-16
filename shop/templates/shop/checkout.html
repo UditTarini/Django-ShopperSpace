@@ -15,46 +15,46 @@
           <div  class="border-0 bg-light">
                     <div class="font-weight-bold py-3 px-3 text-uppercase">Enter Your Address</div>
                 </div>
-                <form method="post" action="/shop/checkout/" class="checkout-form-content row" >{% csrf_token %} 
+                <form method="post" action="/shop/checkout/" class="form-content row" >{% csrf_token %} 
                 <input type="hidden"  name="itemsJson" id="itemsJson">
                 <input type="hidden" name="amount" id="amount">  
                         <div class="col-md-6">
                             <div class="form-group">
                      
-                                <input type="text" class="checkout-form-control" id="firstName" name="firstName" placeholder="Your First Name " value=""/>
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your First Name " value=""/>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="checkout-form-control" id="email" name="email" placeholder="Email " value=""/>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Email " value=""/>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="checkout-form-control" id="country" name="country" placeholder="Country " value=""/>
+                                <input type="text" class="form-control" id="country" name="country" placeholder="Country " value=""/>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="checkout-form-control" id="zip_code" name="zip_code" placeholder="Zip Code " value=""/>
+                                <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Zip Code " value=""/>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="checkout-form-control" id="lastName" name="lastName" placeholder="Your Last Name " value=""/>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Your Last Name " value=""/>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="checkout-form-control" id="phone" name="phone" placeholder="Phone Number " value=""/>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number " value=""/>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="checkout-form-control" id="state" name="state" placeholder="State " value=""/>
+                                <input type="text" class="form-control" id="state" name="state" placeholder="State " value=""/>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="checkout-form-control" id="city" name="city" placeholder="City " value=""/>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="City " value=""/>
                             </div> 
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" id="address1" name="address1" class="checkout-form-control" placeholder="Flat / House no. / Floor / Bulding " value=""/>
+                                <input type="text" id="address1" name="address1" class="form-control" placeholder="Flat / House no. / Floor / Bulding " value=""/>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="address12" name="address2" class="checkout-form-control" placeholder="Colony / Street / Locality" value=""/>
+                                <input type="text" id="address12" name="address2" class="form-control" placeholder="Colony / Street / Locality" value=""/>
                             </div>
                        </div>
                        <button type="submit" style="font-family: 'PT Sans', sans-serif;font-size: 22px;"

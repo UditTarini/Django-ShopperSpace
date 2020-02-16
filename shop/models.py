@@ -5,6 +5,8 @@ from django.shortcuts import reverse
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 
+
+
 # Create your models here.
 
 LABEL = (

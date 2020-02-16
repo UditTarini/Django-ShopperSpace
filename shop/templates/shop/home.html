@@ -166,37 +166,39 @@
 
             {% for i in trendProducts %}
             <div class="product-grid lg-mx-2  ">
-                    <div class="product-image3">
-                        
-                        <a href="/shop/product/{{i.id}}">
-                            
-                            <div class="imgdiv">
-                            <img id="imagepr{{i.id}}" class=" imgdiv2" src={{i.image}}>
-                           
-                            </div>
-                        </a>
-                        <ul class="social">
-                            <li>
-                             <span id="divpr{{i.id}}" class="divpr">
-                                <a href="/shop/cart"><i id="pr{{i.id}}" class="fa fa-shopping-bag cart"></i></a>
-                               </span>
-                            </li>
-                            <li>
-                                <span id="divpr{{i.id}}" class="divpr">
-                                <a href=""><i id="pr{{i.id}}" class="fa fa-shopping-cart cart"></i></a>
-                               </span>
-                            </li>
-                        </ul>
+                <div class="product-image3">
                     
-                    </div>
-                    <div class="product-content">
-                        <h3 id="namepr{{i.id}}" class="title">{{i.productName|slice:"0:20"}}...</h3>
-                        <div class="price" id="pricepr{{i.id}}">&#8377 {{i.price}}
-                            
-                        </div>
-                        <span type="hidden" id="catagorypr{{i.id}}" >{{prodView.category}}</span>
+                    <a href="/shop/product/{{i.slug}}/{{i.id}}">
                         
+                        <div class="imgdiv">
+                         <img class=" imgdiv2 imgdivpr{{i.id}}" src={{i.image}}>
+                       
+                        </div>
+                    </a>
+                    <ul class="social">
+                        <li>
+                            <span id="divpr{{i.id}}" class="divpr">
+                               <a href="/shop/cart"><i id="pr{{i.id}}" class="fa fa-shopping-bag cart"></i></a>
+                              </span>
+                           </li>
+                           <li>
+                               <span id="divpr{{i.id}}" class="divpr">
+                               <a href=""><i id="pr{{i.id}}" class="fa fa-shopping-cart cart"></i></a>
+                              </span>
+                           </li>
+                    </ul>
+                    <!-- <span class="product-new-label">New</span> -->
+                </div>
+                <div class="product-content">
+                    <p hidden id="catagorypr{{i.id}}">{{i.category}}</p>
+                    <p>{{ i.subCatagory }}</p>
+                    <h3 class="title" id="namepr{{i.id}}">{{i.productName|slice:"0:20"}}...</h3>
+                    <div class="price"  >
+                        <span id="pricepr{{i.id}}"> &#8377 {{i.price}}</span>
+                        <span class="oldPrice">&#8377 {{ i.oldPrice }}</span>
                     </div>
+                    
+                </div>
             </div>   
             {% endfor %}
         </div>
@@ -235,33 +237,35 @@ data-top-bottom="background-position: 0 20px">
             <div class="product-grid lg-mx-2  ">
                 <div class="product-image3">
                     
-                    <a href="/shop/product/{{i.id}}">
+                    <a href="/shop/product/{{i.slug}}/{{i.id}}">
                         
                         <div class="imgdiv">
-                        <img id="imagepr{{i.id}}" class=" imgdiv2" src="{{i.image}}">
+                         <img class=" imgdiv2 imgdivpr{{i.id}}" src={{i.image}}>
                        
                         </div>
                     </a>
                     <ul class="social">
                         <li>
-                         <span id="divpr{{i.id}}" class="divpr">
-                            <a href="/shop/cart"><i id="pr{{i.id}}" class="fa fa-shopping-bag cart"></i></a>
-                           </span>
-                        </li>
-                        <li>
                             <span id="divpr{{i.id}}" class="divpr">
-                            <a href=""><i id="pr{{i.id}}" class="fa fa-shopping-cart cart"></i></a>
-                           </span>
-                        </li>
+                               <a href="/shop/cart"><i id="pr{{i.id}}" class="fa fa-shopping-bag cart"></i></a>
+                              </span>
+                           </li>
+                           <li>
+                               <span id="divpr{{i.id}}" class="divpr">
+                               <a href=""><i id="pr{{i.id}}" class="fa fa-shopping-cart cart"></i></a>
+                              </span>
+                           </li>
                     </ul>
-                
+                    <!-- <span class="product-new-label">New</span> -->
                 </div>
                 <div class="product-content">
-                    <h3 id="namepr{{i.id}}" class="title">{{i.productName|slice:"0:20"}}...</h3>
-                    <div class="price" id="pricepr{{i.id}}">&#8377 {{i.price}}
-                        
+                    <p hidden id="catagorypr{{i.id}}">{{i.category}}</p>
+                    <p>{{ i.subCatagory }}</p>
+                    <h3 class="title" id="namepr{{i.id}}">{{i.productName|slice:"0:20"}}...</h3>
+                    <div class="price"  >
+                        <span id="pricepr{{i.id}}"> &#8377 {{i.price}}</span>
+                        <span class="oldPrice">&#8377 {{ i.oldPrice }}</span>
                     </div>
-                    <span type="hidden" id="catagorypr{{i.id}}" >{{prodView.category}}</span>
                     
                 </div>
         </div>   
@@ -408,31 +412,6 @@ $(document).ready(function() {
     })
 
 
-//     const par = document.getElementsByclassName("newsletter_image");
-//     window.addEventListener("scroll", function()
-//     {
-//         let offset = window.pageYOffset;
-//         par.style.backgroundPositionY= offset * 0.7 + 'px'
-//     })
-
-
-//     function doAnimation(id, animName, duration, delay)
-//     {
-//     var el = document.getElementsByclassName(id);
-//     var timer;
-//     function addclass() {
-//         el.classList.add(animName);
-//     }
-//     function removeclass() {
-//         el.classList.remove(animName);
-//     }
-//     setInterval(function () {
-//         clearTimeout(timer);
-//         addclass();
-//         timer = setTimeout(removeclass, duration);
-//     }, duration + delay);
-//    }
-//    doAnimation('section_title', 'fadeIn', 1000, 4000);
 
 
 console.log('working')
@@ -453,14 +432,21 @@ console.log('working')
        
         
     } else {
-        
+             
         qty = 1;
-        name = document.getElementById('name'+idstr).innerHTML;
-        price = document.getElementById('price'+idstr).innerHTML;
-        image = document.getElementById('image'+idstr).getAttribute("src");
-        console.log(image);
-        catagory = document.getElementById('catagory'+idstr).innerHTML;
-        cart[idstr] = [qty, name, parseInt(price), image, catagory ];
+         
+         name = document.getElementById('name'+idstr).innerHTML;          
+         
+         currency = document.getElementById('price'+idstr).innerHTML;
+         price =Number(currency.replace(/[^0-9.-]+/g,""));
+        
+         
+         image = $('.imgdiv'+idstr).attr('src');
+         
+         catagory = document.getElementById('catagory'+idstr).innerHTML;
+         
+         cart[idstr] = [qty, name, parseInt(price), image, catagory ];
+         
     }
     updateCart(cart);
      });

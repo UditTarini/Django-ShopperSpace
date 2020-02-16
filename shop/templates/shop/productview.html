@@ -77,48 +77,77 @@
     <div style="align:center;font-family: 'PT Sans', sans-serif;font-size: 22px;">
       
         <span id="divpr{{i}}" class="divpr ">
-          <a href="/shop/cart"> <button type="button .btn-lg" id="pr{{i}}"  
-            class="btn btn-danger  red_gradient3 btn-lg cart">Buy Now</button></a>
+          <a href="/shop/cart"> 
+            <button type="button" id="pr{{i}}"  
+            class="btn btn-danger  red_gradient3 btn-lg cart">Buy Now
+          </button>
+          </a>
         </span>
       
         <span id="divpr{{i}}" class="divpr">
-           <a href=""><button type="button" id="pr{{i}}" 
-            class="btn btn-primary btn-lg  blue_gradient1 cart">Add to Cart</button></a>
+           <a href="">
+            <button type="button" id="pr{{i}}" 
+            class="btn btn-primary btn-lg  blue_gradient1 cart">Add to Cart
+            </button>
+          </a>
        </span>
     </div>
   </form>
     <!-- /.row -->
   
     <!-- Related Projects Row -->
-    <h3 style="font-family: 'Montserrat', sans-serif;font-size: 22px;" class="my-4 font-weight-bold">Related Products</h3>
+    
   
-    <div class="row">
-  
-      <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-              <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
+    <section class="product show">
+      <div class="container mt-5 ">
+      <div class="heading  " style="  font-family: 'Josefin Sans', 'sans-serif';">
+          <h2 class="font-weight-bold" >RELATED <span class="theme-color">PRODUCTS</span></h2>
       </div>
   
-      <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-              <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
-      </div>
+          <div class="row owl-carousel owl-theme" id="owl-demo4">
   
-      <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-              <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
-      </div>
-  
-      <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-              <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
-      </div>
-  
-    </div>
+              {% for item in relatedProd %}
+              <div class="product-grid lg-mx-2  ">
+                      <div class="product-image3">
+                       
+                          <a href="/shop/product/{{item.slug}}/{{item.id}}">
+                              
+                              <div  class="imgdiv">
+                              <img class="imgdiv2 imgdivpr{{item.id}}"    src={{item.image}}>
+                             
+                              </div>
+                          </a>
+                          <ul class="social">
+                              <li>
+                               <span id="divpr{{item.id}}" class="divpr">
+                                  <a href="/shop/cart"><i id="pr{{item.id}}" class="fa fa-shopping-bag cart"></i></a>
+                                 </span>
+                              </li>
+                              <li>
+                                  <span id="divpr{{item.id}}" class="divpr">
+                                  <a href=""><i id="pr{{item.id}}" class="fa fa-shopping-cart cart"></i></a>
+                                 </span>
+                              </li>
+                          </ul>
+                      
+                      </div>
+                      <div class="product-content">
+                        <p hidden id="catagorypr{{item.id}}">{{item.category}}</p>
+                        <p>{{ item.subCatagory }}</p>  
+                        <h3 id="namepr{{item.id}}" class="title">{{item.productName|slice:"0:20"}}...</h3>
+                          <div class="price">
+                            <span id="pricepr{{item.id}}"> &#8377 {{item.price}}</span>
+                            <span class="oldPrice">&#8377 {{ item.oldPrice }}</span>
+                              
+                          </div>
+                          
+                          
+                      </div>
+              </div>   
+              {% endfor %}
+          </div>
+      </div> 
+  </section>
     <!-- /.row -->
   
   </div>
@@ -128,8 +157,8 @@
 {% block js %}
 
 <script>
-  console.log('working')
-  if(localStorage.getItem('cart')==null){
+  
+   if(localStorage.getItem('cart')==null){
     var cart = {};
   }
   else
@@ -139,26 +168,53 @@
   }  
   
   $('.cart').click(function(){
+    
     var idstr = this.id.toString();
-    console.log(idstr)
+
     if (cart[idstr] != undefined) {
         qty = cart[idstr][0] + 1;
        
         
     } else {
+       
+      qty = 1;
+     
+         name = document.getElementById('name'+idstr).innerHTML;          
+         
+         currency = document.getElementById('price'+idstr).innerHTML;
+         price =Number(currency.replace(/[^0-9.-]+/g,""));
+       
+    
+         image = $('.imgdiv'+idstr).attr('src');
+       
+         catagory = document.getElementById('catagory'+idstr).innerHTML;
       
-        qty = 1;
-        name = document.getElementById('name'+idstr).innerHTML;
-        price = document.getElementById('price'+idstr).innerHTML;
-        
-        image = $('.imgdiv img').attr('src');
-        catagory = document.getElementById('catagory'+idstr).innerHTML;
-        cart[idstr] = [qty, name, parseInt(price), image, catagory ];
+         cart[idstr] = [qty, name, parseInt(price), image, catagory ];
+         
     }
     updateCart(cart);
      });
 
 
+     $('#owl-demo4').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        dots:true,
+        navText: [$('.am-next'),$('.am-prev')],
+        autoplayHoverPause: true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
+        }
+    })
 
     function updateCart(cart) {
 
@@ -168,4 +224,5 @@
   
 }
   </script>
+    <script></script>
 {% endblock %}
