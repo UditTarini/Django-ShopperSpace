@@ -77,7 +77,7 @@
                                 <th class="right">Total</th>
                             </tr>
                         </thead>
-                        <tbody id="invoice">
+                        <tbody id="invoice" >
                            
                            
                         </tbody>
@@ -152,7 +152,7 @@
                             count = count + 1
                             subTotPrice = subTotPrice + itemTotPrice
                             payStatus = 'paid'
-                            console.log(name)
+                          
                             myhtml = `<tr>
                                             <td class="center">${count}</td>
                                                 <td class="left strong">${name}</td>                               
@@ -169,7 +169,7 @@
                     delivery = 40
                     total = subTotPrice + delivery
                     myhtml = `
-                        <tbody>
+                        <tbody >
                                 <tr>
                                     <td class="left">
                                         <strong>Subtotal</strong>
@@ -199,8 +199,8 @@
                     
                     mystr = `           
                      <div class=" bg-white rounded shadow mb-5">
-                 <div class=" red_gradient1  p-5" >
-                   <h4 class="display-3">Sorry !</h4> 
+                 <div class=" red_gradient1 animated bounceIn  p-5" >
+                   <h4 class="display-3 ">Sorry !</h4> 
                 </div>
                 <h3 class="p-5"> Unable to fetch your order status. Make sure to type correct order Id</h3>
 

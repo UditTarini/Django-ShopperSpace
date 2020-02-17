@@ -11,17 +11,17 @@
        
         <div class="container text-center ">
           <div class=" bg-white rounded shadow ">
-             <div class="green_gradient1  p-5" >
-                 <p class="display-3 p-2" style="font-size: 50px;">Order Successful</p>
+             <div class="green_gradient2 animated zoomIn  p-5" >
+                 <p class="display-3 p-2 animated " style="font-size: 50px;">Order Successful </p>
              </div>
               
                 <h3 style="font-family: 'Open Sans', sans-serif;" class="pt-5">Thank You </h3>
                 <h3 style="font-family: 'Open Sans', sans-serif;" class="pb-5">for shopping with us !</h3>
                 
-                <p ><strong style="font-family: 'Public Sans', sans-serif;"> Amount :</strong> {{response.TXNAMOUNT}}</p>
-                <p ><strong style="font-family: 'Public Sans', sans-serif;">Date :</strong> {{response.TXNDATE}}</p>
-                <p ><strong style="font-family: 'Public Sans', sans-serif;">Transaction ID :</strong> {{response.TXNID}}</p>
-                <p ><strong style="font-family: 'Public Sans', sans-serif;">Order ID :</strong>  {{response.ORDERID}} (Use this Order ID to track your order) </p>
+                <p > Amount : <strong style="font-family: 'Public Sans', sans-serif;">  {{response.TXNAMOUNT}}</strong>  </p>
+                <p > Date : <strong style="font-family: 'Public Sans', sans-serif;"> {{response.TXNDATE}}</strong> </p>
+                <p > Transaction ID : <strong style="font-family: 'Public Sans', sans-serif;"> {{response.TXNID}}</strong> </p>
+                <p > Order ID : <strong style="font-family: 'Public Sans', sans-serif;"> {{response.ORDERID}}</strong>   (Use this Order ID to track your order) </p>
               
                 <hr>
                 <p style="font-family: 'Open Sans', sans-serif;" >
@@ -29,7 +29,7 @@
                 </p>
                 
                 <p class=" pb-5">
-                <a style="font-family: 'Open Sans', sans-serif; font-size: 15px;"  class="btn btn-primary btn-sm p-2 px-3 " href="/shop/" role="button">Keep Shopping</a>
+                <a style="font-family: 'Open Sans', sans-serif; font-size: 15px;"  class="btn blue_gradient1 text-white btn-sm p-2 px-3 " href="/shop/" role="button">Keep Shopping</a>
                 </p>
             </div>
         </div>
