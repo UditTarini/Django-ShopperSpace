@@ -14,7 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from paytm import Checksum
 from django.http import HttpResponse
 
-MERCHANT_KEY = ''
+MERCHANT_KEY = 'm key'
 
 
 def home(request):
@@ -118,7 +118,7 @@ def checkout(request):
         id = order.order_id
         param_dict = {
 
-                'MID': '',
+                'MID': 'm id',
                 'ORDER_ID': str(order.order_id),
                 'TXN_AMOUNT': str(amount),
                 'CUST_ID': email,
