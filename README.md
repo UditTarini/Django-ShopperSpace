@@ -1,8 +1,8 @@
 # Django-ShopperSpace
-A complete e-commerce website builds using Django framework. Features like buying, selling, searching, adding a product to cart, payment, tracking order status is integrated. Frond-end is designed with an appealing look using html5, bootstrap, css3, javascript, and  Ajax. It's completely free, anyone can use it for commercial purposes.
+A complete e-commerce website builds using Django framework. Features like buying, selling, searching, adding a product to cart, payment, tracking order status, Invoice is integrated. Frond-end is designed with an appealing look using html5, bootstrap, css3, javascript, and  Ajax. It's completely free, anyone can use it for commercial purposes.
 
 
-# Required Modules
+## Required Modules
 - Django
 - math
 - Crypto.Cipher
@@ -15,16 +15,16 @@ A complete e-commerce website builds using Django framework. Features like buyin
 
 
 
-# Platforms used
+## Platforms used
 
-## Front-End
+#### Front-End
 - HTML5
 - CSS3
 - JavaScript
 - Bootstrap
 - Ajax
 
-## Back-End
+#### Back-End
 - Python
 - sqlite3
 
@@ -38,4 +38,17 @@ python django_web_app/manage.py makemigrations
 python django_web_app/manage.py migrate
 python django_web_app/manage.py runserver
 ```
+## Screenshots
+### Product Page
+![product page](media/shop/images/git%20img/ProdPage.png)
+### Cart 
+![checkout](media/shop/images/git%20img/Checkout.png)
+### Checkout page
+![adress](media/shop/images/git%20img/Details.png)
+### Payment Success page
+![payment success](media/shop/images/git%20img/OrderSuccess.png)
+### Order Tracker page
+![order tracker](media/shop/images/git%20img/Tracker.png)
+
+
 
