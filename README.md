@@ -40,15 +40,16 @@ python django_web_app/manage.py runserver
 ```
 ## Screenshots
 ### Product Page
-![product page](media/shop/images/git%20img/ProdPage.png)
+![product page](media/shop/images/git%20src/ProdPage.png)
 ### Cart 
-![checkout](media/shop/images/git%20img/Checkout.png)
+![checkout](media/shop/images/git%20src/Checkout.png)
 ### Checkout page
-![adress](media/shop/images/git%20img/Details.png)
+![adress](media/shop/images/git%20src/Details.png)
+
 ### Payment Success page
-![payment success](media/shop/images/git%20img/OrderSuccess.png)
+![payment success](media/shop/images/git%20src/OrderSuccess.png)
 ### Order Tracker page
-![order tracker](media/shop/images/git%20img/Tracker.png)
+![order tracker](media/shop/images/git%20src/Tracker.png)
 
 
 
