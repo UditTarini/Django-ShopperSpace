@@ -34,6 +34,27 @@ def catagoryView(request, cat):
     params = {'products':prod}
     return render(request, 'shop/catagoryview.html',params)
 
+def search(request):
+    
+    query = request.GET.get('search')
+    products = []
+    catprods = product.objects.values('category', 'id')
+    cats = {item['category'] for item in catprods}
+    for cat in cats:
+        prods = product.objects.filter(category=cat)
+      
+        prod = [item for item in prods if matchSearch(query, item)]
+        if len(prod) != 0:
+           
+            products.append(prod)    
+    params = {'products': products[0], "msg": ""}
+    if len(products) == 0 or len(query)<3:
+        params = {'msg': "Please enter a valid search query"}
+    for i in products:
+        print(i[0].price)
+   
+    return render(request, 'shop/search.html', params)
+
 def index(request): 
     allProds = []
     catprods = product.objects.values('category', 'id')
@@ -46,7 +67,8 @@ def index(request):
 
     params = {'allProds':allProds}
     return render(request, 'shop/index.html', params)
-    
+
+@login_required    
 def cart(request):
     return render(request, 'shop/cart.html')
 
@@ -69,24 +91,6 @@ def matchSearch(query, item):
     else:
         return False
 
-def search(request):
-    
-    query = request.GET.get('search')
-    allProds = []
-    catprods = product.objects.values('category', 'id')
-    cats = {item['category'] for item in catprods}
-    for cat in cats:
-        prods = product.objects.filter(category=cat)
-        prod = [item for item in prods if matchSearch(query, item)]
-
-        n = len(prod)
-        nSlides = n // 4 + ceil((n / 4) - (n // 4))
-        if len(prod) != 0:
-            allProds.append([prod, range(1, nSlides), nSlides])
-    params = {'allProds': allProds, "msg": ""}
-    if len(allProds) == 0 or len(query)<3:
-        params = {'msg': "Please enter a valid search query"}
-    return render(request, 'shop/search.html', params)
 
 def productView(request, prodid, cat):
     prodView = product.objects.filter(id=prodid)

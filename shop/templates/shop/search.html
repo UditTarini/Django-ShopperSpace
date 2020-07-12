@@ -1,64 +1,100 @@
-{% extends 'shop/basic.html' %}
-
-{% block title %} search{% endblock %}
-
+{% extends 'shop/basic.html' %} 
+{% block title %}search{% endblock %}
 {% block head %} 
+{% endblock %} 
+{% block body %}
 
-
-{% endblock %}
-
-
-
-
-{% block body %} 
-
-{% for product, range, nSlides in allProds %}
-
-
-<h5 style="font-family: 'Noto Sans JP', sans-serif; font-size: 22px;" class="my-4 ml-3  ">{{product.0.category}} </h5>
-<div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
-  <div class="carousel-inner ">
-    <a class="carousel-control-prev mr-9 " href="#demo{{forloop.counter}}" data-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </a>
-    <div class="carousel-item active">
-      {% for i in product %}
-      <div class="col-xs-3 col-sm-3 col-md-3 col-xl-2">
-        <div class="dj-slide ">
-          <a href="/shop/product/{{i.id}}">
-            <div class="cont">
-              <div class="imgdiv">
-                <img class="imgdiv2" src="/media/{{i.image}}" alt="...">
-              </div>
+<div class="container">
+  <div class="row mt-5">
+    
+    {% for i in products %}
+  
+    <div class="product-grid">
+      <div class="">
+        <div class="product-image3">
+          <a href="/shop/product/{{i.slug}}/{{i.id}}">
+            <div class="imgdiv">
+              <img class=" imgdiv2 imgdivpr{{i.id}}" src="{{i.image}}" />
+            </div>
           </a>
-          <div style="font-family: 'Muli', sans-serif;" class="prodName">{{i.productName|slice:"0:45"}}...</div>
-          <div class="off">50% off</div>
-        </div> 
+          <ul class="social">
+            <li>
+              <span id="divpr{{i.id}}" class="divpr">
+                <a href="/shop/cart"
+                  ><i id="pr{{i.id}}" class="fa fa-shopping-bag cart"></i
+                ></a>
+              </span>
+            </li>
+            <li>
+              <span id="divpr{{i.id}}" class="divpr">
+                <a href=""
+                  ><i id="pr{{i.id}}" class="fa fa-shopping-cart cart"></i
+                ></a>
+              </span>
+            </li>
+          </ul>
+          <!-- <span class="product-new-label">New</span> -->
+        </div>
+        <div class="product-content">
+            <p hidden id="catagorypr{{i.id}}">{{i.category}}</p>
+            <p>{{ i.subCatagory }}</p>
+            <h3 class="title" id="namepr{{i.id}}">{{i.productName|slice:"0:20"}}...</h3>
+            <div class="price"  >
+                <span id="pricepr{{i.id}}"> &#8377 {{i.price}}</span>
+                <span class="oldPrice">&#8377 {{ i.oldPrice }}</span>
+            </div>
+            
+        </div>
       </div>
     </div>
-    {% if forloop.counter|divisibleby:6 and forloop.counter > 0 and not forloop.last %}
-  </div>
-  <div class="carousel-item">
-    {% endif %}
-
     {% endfor %}
   </div>
 </div>
-</div>
 
-{% endfor %}
-
-
-{% endblock %}
+{% endblock %} 
 
 {% block js %}
 <script>
-{% if msg|length != 0 %}
-alert('{{msg}}');
-window.location.href = "/"
-{% endif %}  
+  {% if msg|length != 0 %}
+  alert('{{msg}}');
+  window.location.href = "/"
+  {% endif %}
+
+  if (localStorage.getItem("cart") == null) {
+    var cart = {};
+  } else {
+    cart = JSON.parse(localStorage.getItem("cart"));
+    updateCart(cart);
+  }
+
+  $(".cart").click(function () {
+    var idstr = this.id.toString();
+    if (cart[idstr] != undefined) {
+      qty = cart[idstr][0] + 1;
+     
+    } else {
+      qty = 1;
+      
+      name = document.getElementById("name" + idstr).innerHTML;
+
+      currency = document.getElementById("price" + idstr).innerHTML;
+      price = Number(currency.replace(/[^0-9.-]+/g, ""));
+
+      image = $(".imgdiv" + idstr).attr("src");
+    
+      catagory = document.getElementById("catagory" + idstr).innerHTML;
+      
+      cart[idstr] = [qty, name, parseInt(price), image, catagory];
+      console.log(name, price, catagory);
+    }
+    updateCart(cart);
+  });
+
+  function updateCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  
+   
+  }
 </script>
+
 {% endblock %}

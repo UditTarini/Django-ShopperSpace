@@ -25,7 +25,7 @@ SECRET_KEY = 'fsze9+s&*7+jaz(x#p#ru!ky@s-5w6i^o3(s#y8mu%ec#ge0qa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','814e5ca3.ngrok.io']
 
 
 # Application definition
@@ -136,4 +136,6 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend'
 )
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
 SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
