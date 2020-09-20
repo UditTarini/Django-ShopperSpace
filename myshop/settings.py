@@ -25,7 +25,7 @@ SECRET_KEY = 'fsze9+s&*7+jaz(x#p#ru!ky@s-5w6i^o3(s#y8mu%ec#ge0qa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','814e5ca3.ngrok.io']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','928b00762634.ngrok.io']
 
 
 # Application definition
@@ -63,7 +63,7 @@ ROOT_URLCONF = 'myshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,"templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

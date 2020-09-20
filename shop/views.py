@@ -23,7 +23,7 @@ def home(request):
      
       params = {'trendProducts':trendProd, 'newProducts' :newProd }
     
-      return render(request, 'shop/home.html',params)
+      return render(request, 'home.html',params)
    
 
 
@@ -32,7 +32,7 @@ def catagoryView(request, cat):
 
     prod = product.objects.filter(slug=cat)
     params = {'products':prod}
-    return render(request, 'shop/catagoryview.html',params)
+    return render(request, 'catagoryview.html',params)
 
 def search(request):
     
@@ -50,10 +50,9 @@ def search(request):
     params = {'products': products[0], "msg": ""}
     if len(products) == 0 or len(query)<3:
         params = {'msg': "Please enter a valid search query"}
-    for i in products:
-        print(i[0].price)
+    
    
-    return render(request, 'shop/search.html', params)
+    return render(request, 'search.html', params)
 
 def index(request): 
     allProds = []
@@ -66,14 +65,14 @@ def index(request):
         allProds.append([prod, range(1, nSlides), nSlides])
 
     params = {'allProds':allProds}
-    return render(request, 'shop/index.html', params)
+    return render(request, 'index.html', params)
 
-@login_required    
+@login_required(login_url="/accounts/login")    
 def cart(request):
-    return render(request, 'shop/cart.html')
+    return render(request, 'cart.html')
 
 def about(request):
-    return render(request, 'shop/about.html')
+    return render(request, 'about.html')
 def contact(request):
     if request.method=="POST":
         name = request.POST.get('name', '')
@@ -82,7 +81,7 @@ def contact(request):
         desc = request.POST.get('desc', '')
         contact = Contact(name=name, email=email, phone=phone, desc=desc)
         contact.save()
-    return render(request, 'shop/contact.html')
+    return render(request, 'contact.html')
 
 def matchSearch(query, item):
     '''return true only if query matches the item'''
@@ -97,7 +96,7 @@ def productView(request, prodid, cat):
      
     relatedProd = product.objects.filter(slug=cat)
 
-    return render(request, 'shop/productview.html', {'prodView':prodView[0], 'i':prodid, 'relatedProd':relatedProd })
+    return render(request, 'productview.html', {'prodView':prodView[0], 'i':prodid, 'relatedProd':relatedProd })
 
 def checkout(request):
     if request.method=="POST":
@@ -129,12 +128,12 @@ def checkout(request):
                 'INDUSTRY_TYPE_ID': 'Retail',
                 'WEBSITE': 'WEBSTAGING',
                 'CHANNEL_ID': 'WEB',
-                'CALLBACK_URL':'http://127.0.0.1:8000/shop/paymentstatus/',
+                'CALLBACK_URL':'http://127.0.0.1:8000/paymentstatus/',
 
         }
         param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)
-        return render(request, 'shop/paytm.html', {'param_dict': param_dict})
-    return render(request, 'shop/checkout.html') 
+        return render(request, 'paytm.html', {'param_dict': param_dict})
+    return render(request, 'checkout.html') 
 
 @csrf_exempt
 def handlerequest(request):
@@ -153,7 +152,7 @@ def handlerequest(request):
            print("order")
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
-    return render(request, 'shop/paymentstatus.html', {'response': response_dict})
+    return render(request, 'paymentstatus.html', {'response': response_dict})
 
 def tracker(request):
     if request.method=="POST":
@@ -174,4 +173,4 @@ def tracker(request):
         except Exception as e:
             return HttpResponse('{"status":"error"}')
 
-    return render(request, 'shop/tracker.html')    
+    return render(request, 'tracker.html')    
