@@ -6,19 +6,54 @@
 
 {% block body %}
   <main>
-    <div class="container">
-      <section class="mb-4">
-        <div class="row wow fadeIn">
-          <div class='col-6 offset-3'>
-            <h1>{% trans "Sign Up" %}</h1>
-            <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<div class="container contact-form ">
+      <section class="bg-white rounded shadow">
+        <div class="fadeIn">
+          <div class='text-center'>
+           
             <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-              {% csrf_token %}
-              {{ form.as_p }}
+             {% csrf_token %}
+            <h3 class="mb-5">{% trans "Create an account" %}</h3>
+            <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">log in</a>.{% endblocktrans %}</p>
+              
+             
+            
+     
+        <div class="form-group">
+         {% for err in form.username.errors %}
+              <div  style="color: red;font-weight: bold;margin-bottom: 5px;"> {{ err }}</div>
+        {% endfor %}
+          <input type="text" class="form-control" id="id_username" name='username' placeholder="Username" autofocus="autofocus" required>
+        </div>
+
+      
+
+        <div class="form-group">
+          {% for err in form.email.errors %}
+              <div  style="color: red;font-weight: bold;margin-bottom: 5px;"> {{ err }}</div>
+        {% endfor %}
+          <input type="text" class="form-control" id="id_email" name='email' placeholder="Email"  required>
+         </div>
+
+        
+         <div class="form-group">
+         {% for err in form.password1.errors %}
+              <div  style="color: red;font-weight: bold;margin-bottom: 5px;"> {{ err }}</div>
+        {% endfor %}
+            <input type="password" class="form-control" id="id_password1" name='password1' placeholder="Password" required>
+         </div>
+
+          <div class="form-group">
+
+           
+
+            <input type="password" class="form-control" id="id_password2" name='password2' placeholder="Password (again)" required>
+         </div> 
+
               {% if redirect_field_value %}
               <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
               {% endif %}
-              <button class='btn btn-primary' type="submit">{% trans "Sign Up" %} &raquo;</button>
+              <button class='btn green_gradient2 text-white px-5 ' style="font-family: 'PT Sans', sans-serif;font-size: 20px;" type="submit">{% trans "Sign Up" %} &raquo;</button>
             </form>
           </div>
         </div>

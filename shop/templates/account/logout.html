@@ -5,18 +5,20 @@
 
 {% block body %}
   <main>
-    <div class="container">
-      <section class="mb-4">
-        <div class="row wow fadeIn">
-          <div class='col-6 offset-3'>
-            <h1>{% trans "Sign Out" %}</h1>
-            <p>{% trans 'Are you sure you want to sign out?' %}</p>
+   <div class="container contact-form ">
+      <section class="bg-white rounded shadow">
+        <div class="fadeIn">
+          <div class='text-center'>
+          
             <form method="post" action="{% url 'account_logout' %}">
+             <h3 class="mb-5">{% trans "Sign Out" %}</h1>
+             <h5>{% trans 'Are you sure you want to sign out?' %}</h5>
+              
               {% csrf_token %}
               {% if redirect_field_value %}
               <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
               {% endif %}
-              <button class='btn btn-primary' type="submit">{% trans 'Sign Out' %}</button>
+              <button class='btn mt-3 font-weight-bold hover btn-danger py-2 red_gradient3 ' type="submit">{% trans 'Sign Out' %}</button>
             </form>
           </div>
         </div>
