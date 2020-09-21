@@ -6,11 +6,11 @@
 
 {% block body %}
 <main>
-<div class="container">
-      <section class="mb-4">
+<div class="container mt-3 py-5 contact-form ">
+      <section class="mt-5 bg-white rounded shadow">
         <div class="row wow fadeIn">
           <div class='col-6 offset-3'>
-          <h1>{% trans "Sign In" %}</h1>
+          <h3 class="mt-2">{% trans "Sign In" %}</h3>
 
           {% get_providers as socialaccount_providers %}
 
@@ -38,12 +38,31 @@
 
           <form class="login" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
-            {{ form.as_p }}
+            {% comment %} {{ form.as_p }} {% endcomment %}
+           
+                 
+        
+
+   {% for err in form.non_field_errors %}
+   <div  style="color: red;font-weight: bold;margin-bottom: 20px;"> {{ err }}</div>
+  {% endfor %}
+        <div class="form-group">
+       
+          <input type="text" class="form-control" id="id_login" name='login' placeholder="Username" autofocus="autofocus" required>
+        </div>
+        
+        <div class="form-group">
+            <input type="password" class="form-control" id="id_password" name='password' placeholder="Password" required>
+        </div>  
+        <p><label for="id_remember">Remember Me:</label> <input type="checkbox" name="remember" id="id_remember"></p>
             {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            
+            <div class="form-group">
+            <input type="hidden" class="form-control" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+           </div>
             {% endif %}
             <a class="btn btn-default" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-            <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+            <button   type="submit" style="font-family: 'PT Sans', sans-serif;font-size: 20px;" class="btn green_gradient2 text-white px-5 " >{% trans "Sign In" %}</button>
           </form>
           </div>
         </div>
