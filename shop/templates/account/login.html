@@ -6,10 +6,10 @@
 
 {% block body %}
 <main>
-<div class="container mt-3 py-5 contact-form ">
-      <section class="mt-5 bg-white rounded shadow">
-        <div class=" fadeIn">
-          <div class="text-center">
+<div class="container contact-form">
+      <section class="bg-white rounded shadow">
+        <div class="fadeIn">
+          <div class='text-center'>
           <form class="login" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
 

@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +29,7 @@ SECRET_KEY = 'fsze9+s&*7+jaz(x#p#ru!ky@s-5w6i^o3(s#y8mu%ec#ge0qa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','928b00762634.ngrok.io']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '928b00762634.ngrok.io']
 
 
 # Application definition
@@ -38,14 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-
     'django.contrib.sites',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'myshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,"templates")],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,12 +131,17 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
-#Authentication
+# Authentication
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv("DJANGO_EMAIL")
+EMAIL_HOST_PASSWORD = os.getenv("DJANGO_EMAIL_PASSWORD")
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
