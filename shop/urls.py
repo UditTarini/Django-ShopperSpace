@@ -9,11 +9,13 @@ urlpatterns = [
     path('contact/', views.contact, name='ContactUs'),
     path('tracker/', views.tracker, name='TrackingStaus'),
     path('search/', views.search, name='Search'),
-    path('product/<slug:cat>/<int:prodid>', views.productView, name='ProductView'),
+    path('product/<slug:cat>/<int:prodid>',
+         views.productView, name='ProductView'),
     path('checkout/', views.checkout, name='Checkout'),
     path('cart/', views.cart, name='Cart'),
     path("paymentstatus/", views.handlerequest, name="PaymentStatus"),
     path('<slug:cat>/', views.catagoryView, name='catagoryView'),
-    
+    path('sales/<slug:sale>/', views.salesView, name='salesView'),
+
 
 ]
