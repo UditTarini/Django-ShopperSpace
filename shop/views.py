@@ -13,6 +13,14 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from paytm import Checksum
 from django.http import HttpResponse
+from django.core.mail import send_mail
+import requests
+import pandas as pd
+import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import classification_report
 
 MERCHANT_KEY = 'm key'
 
@@ -24,12 +32,22 @@ def home(request):
 
     params = {'trendProducts': trendProd, 'newProducts': newProd}
 
+    if request.method == "POST":
+        email = request.POST.get('email', '')
+
+        send_mail(
+            "Thank you for subscribing",
+            "Hello from ShopperSpace\n\n\nWe are glad that you have subscribed for our news letters. We will send you exciting offers every week.\n\nStay Tuned !\n\nThank you",
+            "refactcode@gmail.com",
+            [email]
+        )
+        params["email"] = email
+
     return render(request, 'home.html', params)
 
 
 def salesView(request, sale):
     prod = product.objects.filter(sale=sale)
-    print("sale", prod)
     params = {'products': prod}
     return render(request, 'catagoryview.html', params)
 
@@ -61,38 +79,54 @@ def search(request):
     return render(request, 'search.html', params)
 
 
-def index(request):
-    allProds = []
-    catprods = product.objects.values('category', 'id')
-    cats = {item['category'] for item in catprods}
-    for cat in cats:
-        prod = product.objects.filter(category=cat)
-        n = len(prod)
-        nSlides = n // 4 + ceil((n / 4) - (n // 4))
-        allProds.append([prod, range(1, nSlides), nSlides])
-
-    params = {'allProds': allProds}
-    return render(request, 'index.html', params)
-
-
 @login_required(login_url="/accounts/login")
 def cart(request):
     return render(request, 'cart.html')
 
 
-def about(request):
-    return render(request, 'about.html')
-
-
 def contact(request):
+    params = {}
     if request.method == "POST":
+
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
         phone = request.POST.get('phone', '')
         desc = request.POST.get('desc', '')
-        contact = Contact(name=name, email=email, phone=phone, desc=desc)
-        contact.save()
-    return render(request, 'contact.html')
+
+        if spamClassifier(desc):
+            params = {"spam": True}
+        else:
+            params = {"spam": False}
+            contact = Contact(name=name, email=email, phone=phone, desc=desc)
+            contact.save()
+    return render(request, 'contact.html', params)
+
+
+def spamClassifier(value):
+    spamData = 'shop/spam.csv'
+    df = pd.read_csv(spamData, encoding="latin-1")
+    df.drop(['Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4'], axis=1, inplace=True)
+    df['label'] = df['v1'].map({'ham': 0, 'spam': 1})
+    X = df['v2']
+    y = df['label']
+    cv = CountVectorizer()
+    X = cv.fit_transform(X)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.33, random_state=42)
+    clf = MultinomialNB()
+    clf.fit(X_train, y_train)
+    clf.score(X_test, y_test)
+    y_pred = clf.predict(X_test)
+    message = value
+    data = [message]
+    vect = cv.transform(data).toarray()
+    my_prediction = clf.predict(vect)
+
+    if(my_prediction == 1):
+        return True
+
+    else:
+        return False
 
 
 def matchSearch(query, item):

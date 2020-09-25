@@ -223,32 +223,37 @@
               <li>Linkedin</li>
             </ul>
           </div>
-
+{% if email %}
+                
+{% else %}
           <div
             class="col-xl-auto text-left col-lg-4 col-md-4 col-sm-6 col-12 pt-4 my-sm-0 order-6 my-auto"
           >
             <div class="input-group-lg input-group mb-3 mt-md-0 mt-4">
+               <form method="post" class="form-inline" id="trackerForm">{% csrf_token %}
               <input
                 type="text"
-                class="form-control"
+                style="height:calc(2.55rem + 6px);"
+                name="email" 
                 placeholder="E-mail address"
                 aria-label="Recipient's username"
                 aria-describedby="button-addon2"
-              />
-              <div
-                class="input-group-append"
-                style="font-family: 'PT Sans', sans-serif; font-size: 22px"
-              >
+            />
+              <div>
                 <button
-                  class="btn btn-success green_gradient"
-                  type="button"
+                  class="btn btn-success green_gradient input-group-append"
+                  type="submit"
                   id="button-addon2"
+               
+                style="font-family: 'PT Sans', sans-serif; font-size: 22px"
                 >
                   Join
                 </button>
               </div>
+              </form>
             </div>
           </div>
+          {% endif %}
         </div>
 
         <div class="row justify-content-lg-around mx-xl-5 mx-lg-4 mx-3 py-3">

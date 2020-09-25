@@ -205,11 +205,13 @@ data-top-bottom="background-position: 0 20px">
       <div class="row">
         <div class="col-xl-5">
           <div class="offer__content text-center">
-            <h3 class="ml2">Up To 50% Off</h3>
-            <h4>Winter Sale</h4>
+            <h3 class="ml2 font-weight-bold">50% Off</h3>
+            <h4> <span class="font-weight-bold"> WINTER </span> IS COMMING !!</h4>
+          
            
             <a  href="sales/winter-discount"><button type="button" 
-                 class="btn  mt-3 mt-xl-4 green_gradient3 btn-md cart">Shop Now</button></a></a>
+                style="font-family: 'PT Sans', sans-serif;font-size: 20px;" 
+              class="btn blue_gradient2 text-white px-2 ">Shop Now</button></a></a>
           </div>
         </div>
       </div>
@@ -271,6 +273,10 @@ data-top-bottom="background-position: 0 20px">
     </div> 
 </section>
 
+
+{% if email %}
+                
+{% else %}
 <div class="newsletter mb-5 mt-5">
     <div class="row">
         <div class="newsletter_image" style="background-image:url(/media/shop/images/img/subscribe.jpg)">
@@ -281,17 +287,17 @@ data-top-bottom="background-position: 0 20px">
 					<div class="col mt-5">
 						<div class="section_title_container text-center">
 							<div class="section_subtitle">only the best</div>
-							<div class="section_title mt-3 animated fadeIn infinite ">subscribe for a 20% discount</div>
+							<div class="section_title mt-3 animated fadeIn infinite ">subscribe to get latest offers</div>
 						</div>
 					</div>
 				</div>
 				<div class="row newsletter_container">
 					<div class="col-lg-10 offset-lg-1">
 						<div class="newsletter_form_container">
-                            <form method="post" action="#" id="trackerForm">{% csrf_token %}
+                            <form method="post"  id="trackerForm">{% csrf_token %}
                                 <div class="form-row mx-auto w-100 p-3">
                                     <div class="form-group  input-group mb-4 ">
-                                        <input  type="text" class="form-control" id="orderId" name=" orderId" 
+                                        <input  type="text" class="form-control" id="orderId" name="email" 
                                         placeholder="E-mail"/>
                                         <button type="submit" style="font-family: 'PT Sans', sans-serif;font-size: 15px;"
                                            class="btn btn-primary  font-weight-bold ">Subscribe</button>
@@ -302,6 +308,7 @@ data-top-bottom="background-position: 0 20px">
 						<div class="newsletter_text pb-5">Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestib ulum ultrices nulla. Aliquam egestas tempor leo.</div>
 					</div>
 				</div>
+                {% endif %}
 			</div>
           
         </div>
@@ -435,11 +442,20 @@ $(document).ready(function() {
 
 function updateCart(cart,json) {
     localStorage.setItem('cart', JSON.stringify(cart));}
-
-
-
 });
+
+
+{% if email %}
+  
+  if (document.cookie.indexOf('subscribed') == -1) {  
+   alert("Thank you for subscribing")
+   document.cookie = "subscribed = true";
    
+  }
+
+{% endif %}
+
 </script>
 
 {% endblock %}
+

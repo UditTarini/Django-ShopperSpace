@@ -58,7 +58,14 @@
 {% endblock %}
 
 {% block js %} 
+<script>
+{% if spam %}
+   alert('No spam allowed')
+{% else %}
+   alert('Thank you, we will reach you soon')
 
+{% endif %}
+</script>
 
 {% endblock %}
 

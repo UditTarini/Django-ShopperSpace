@@ -52,6 +52,13 @@
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.blue_gradient2 {
+  background: #1488cc;
+  /* fallback for old browsers */
+  background: linear-gradient(315deg, #0478fc, #2645d1 60%);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .orange_gradient {
   background: #ff8008;
   /* fallback for old browsers */
@@ -456,6 +463,7 @@ small {
   transition: all 0.3s ease 0s;
 }
 
+/* #e67e22; */
 .product-grid .social li a:hover {
   background: #e67e22;
   color: #fff;
@@ -768,7 +776,7 @@ small {
 /* offfer */
 
 .offer {
-  background: url("/media/shop/images/img/parallax-bg.png") right center no-repeat;
+  background: url("/media/shop/images/img/winter.png") right center no-repeat;
   background-size: cover;
 }
 
