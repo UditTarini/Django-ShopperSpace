@@ -1,4 +1,12 @@
 /* basic */
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  position: relative
+}
 
 /*theme color  */
 .theme-color {
@@ -463,7 +471,7 @@ small {
   transition: all 0.3s ease 0s;
 }
 
-/* #e67e22; */
+
 .product-grid .social li a:hover {
   background: #e67e22;
   color: #fff;
@@ -540,6 +548,53 @@ small {
 
 /* home page */
 
+
+/* color-background */
+.deals {
+  margin-top: 3rem;
+  margin-bottom: 4.5rem;
+
+}
+
+.color-background {
+  background-color: #1ae78e;
+  margin-bottom: 20px;
+  padding-top: 1.8rem;
+
+
+}
+
+.deals-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: auto;
+  justify-content: space-around;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.color-background .deals-img {
+  height: auto;
+  padding-bottom: 20px;
+  width: 33.33%;
+  cursor: pointer;
+}
+
+
+.color-background .deals-img img {
+  width: 95%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0 12px 9px -6px black;
+  /* border: 1px solid; */
+
+}
+
+
+/* color-background */
+
 /* newsletter */
 .newsletter {
   width: 100%;
@@ -594,8 +649,7 @@ small {
 
 .section_title {
   font-size: 48px;
-  font-family: "Lucida", serif;
-  font-size: 60px;
+  font-weight: bold;
   text-transform: uppercase;
   color: whitesmoke;
   margin-top: -4px;
