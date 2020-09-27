@@ -60,21 +60,38 @@ def catagoryView(request, cat):
 
 
 def search(request):
-
+    params = {}
     query = request.GET.get('search')
     products = []
     catprods = product.objects.values('category', 'id')
     cats = {item['category'] for item in catprods}
-    for cat in cats:
-        prods = product.objects.filter(category=cat)
+    try:
+        for cat in cats:
+            prods = product.objects.filter(category=cat)
 
-        prod = [item for item in prods if matchSearch(query, item)]
-        if len(prod) != 0:
+            prod = [item for item in prods if matchSearch(query, item)]
+            if len(prod) != 0:
 
-            products.append(prod)
-    params = {'products': products[0], "msg": ""}
-    if len(products) == 0 or len(query) < 3:
-        params = {'msg': "Please enter a valid search query"}
+                products.append(prod)
+        params = {'products': products[0]}
+        if len(products) == 0 or len(query) < 3:
+
+            params["msg"] = "Please enter a valid search query"
+
+    except:
+        params["msg"] = "Please enter a valid search query"
+
+    # for cat in cats:
+    #     prods = product.objects.filter(category=cat)
+
+    #     prod = [item for item in prods if matchSearch(query, item)]
+    #     if len(prod) != 0:
+
+    #         products.append(prod)
+    # params = {'products': products[0]}
+    # if len(products) == 0 or len(query) < 3:
+    #     print("ERRRORR")
+    #     params["msg"] = "Please enter a valid search query"
 
     return render(request, 'search.html', params)
 

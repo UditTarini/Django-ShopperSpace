@@ -143,7 +143,7 @@
 <section class="product show">
     <div class="container mt-5">
     <div class="heading" style="  font-family: 'Josefin Sans', 'sans-serif';">
-        <h2 class="font-weight-bold" >BROWSE TOP  SELLING <span class="theme-color">PRODUCTS</span></h2>
+        <h2 class="font-weight-bold" >TOP  SELLING <span class="theme-color">PRODUCTS</span></h2>
     </div>
 
         <div class="row owl-carousel owl-theme" id="owl-demo1">
@@ -205,17 +205,19 @@
     <div class="color-background ">
 
     <div class="container deals-container">
-    <div class="deals-img ">
-    <img  src="media/shop/images/img/deals-1.jpg" alt="Card image cap">
-    </div>
 
-    <div class="deals-img">
-    <img  src="media/shop/images/img/deals-2.jpg" alt="Card image cap">   
-    </div>
+    <a href="/wrist-watch-fastrack/" class="deals-img ">
+    <img  src="/media/shop/images/img/deals-1.jpg" alt="fastrack">
+    </a>
 
-    <div class="deals-img ">
-    <img  src="media/shop/images/img/deals-3.jpg" alt="Card image cap">
-    </div>
+    <a href="/jewellery/" class="deals-img">
+    <img  src="/media/shop/images/img/deals-2.jpg" alt="jewellery">   
+    </a>
+
+    <a href="/shoes/" class="deals-img ">
+    <img  src="/media/shop/images/img/deals-3.jpg" alt="shoes">
+    </a>
+  
    </div>
 
     <div>
@@ -229,15 +231,12 @@
 data-anchor-target="#parallax-1" 
 data-300-top="background-position: 20px 30px" 
 data-top-bottom="background-position: 0 20px">
-
     <div class="container">
       <div class="row">
         <div class="col-xl-5">
           <div class="offer__content text-center">
             <h3 class="ml2 font-weight-bold">50% Off</h3>
             <h4> <span class="font-weight-bold"> WINTER </span> IS COMMING !!</h4>
-          
-           
             <a  href="sales/winter-discount"><button type="button" 
                 style="font-family: 'PT Sans', sans-serif;font-size: 20px;" 
               class="btn blue_gradient2 text-white px-2 ">Shop Now</button></a></a>
@@ -247,9 +246,10 @@ data-top-bottom="background-position: 0 20px">
     </div>
   </section>
 
+
   <section class="product show">
     <div class="container mt-5 ">
-    <div class="heading" style="  font-family: 'Josefin Sans', 'sans-serif';">
+    <div class="heading" style="font-family: 'Josefin Sans', 'sans-serif';">
         <h2 class="font-weight-bold" >NEW <span class="theme-color">ARIVALS</span></h2>
     </div>
 
@@ -284,7 +284,6 @@ data-top-bottom="background-position: 0 20px">
                               {% endif %} 
                            </li>
                     </ul>
-                    <!-- <span class="product-new-label">New</span> -->
                 </div>
                 <div class="product-content">
                     <p hidden id="catagorypr{{i.id}}">{{i.category}}</p>
@@ -302,6 +301,35 @@ data-top-bottom="background-position: 0 20px">
     </div> 
 </section>
 
+<section class="product show deals">
+   
+    <div class="heading container" style="  font-family: 'Josefin Sans', 'sans-serif';">
+        <h2 class="font-weight-bold" >BUDGET<span class="theme-color"> SHOPPING</span></h2>
+    </div>
+    <div class="color-background ">
+
+     <div class="container deals-container">
+
+        <a href="/accessories/" class="budget-img ">
+        <img  src="/media/shop/images/img/budget-1.jpg" alt="accessories">
+        </a>
+
+         <a href="/shoes/" class="budget-img">
+        <img  src="/media/shop/images/img/budget-2.jpg" alt="shoes">
+        </a>
+
+         <a href="/head-phone/" class="budget-img">
+        <img  src="/media/shop/images/img/budget-3.jpg" alt="head-phone">
+        </a>
+
+         <a href="/grooming/" class="budget-img">
+        <img  src="/media/shop/images/img/budget-4.jpg" alt="groomimg">
+        </a>
+       
+
+    </div>
+   </div>
+</section>
 
 {% if email %}
                 

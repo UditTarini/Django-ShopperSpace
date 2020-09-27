@@ -5,7 +5,7 @@ body {
 }
 
 body {
-  position: relative
+  position: relative;
 }
 
 /*theme color  */
@@ -471,7 +471,6 @@ small {
   transition: all 0.3s ease 0s;
 }
 
-
 .product-grid .social li a:hover {
   background: #e67e22;
   color: #fff;
@@ -548,20 +547,16 @@ small {
 
 /* home page */
 
-
 /* color-background */
 .deals {
   margin-top: 3rem;
   margin-bottom: 4.5rem;
-
 }
 
 .color-background {
   background-color: #1ae78e;
   margin-bottom: 20px;
   padding-top: 1.8rem;
-
-
 }
 
 .deals-container {
@@ -581,24 +576,34 @@ small {
   cursor: pointer;
 }
 
-
 .color-background .deals-img img {
   width: 95%;
   display: block;
   margin-right: auto;
   margin-left: auto;
   box-shadow: 0 12px 9px -6px black;
-  /* border: 1px solid; */
-
 }
 
+.color-background .budget-img {
+  height: auto;
+  padding-bottom: 20px;
+  width: 25%;
+  cursor: pointer;
+}
+
+.color-background .budget-img img {
+  width: 95%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0 12px 9px -6px black;
+}
 
 /* color-background */
 
 /* newsletter */
 .newsletter {
   width: 100%;
-
 }
 
 .newsletter_content {
@@ -918,9 +923,15 @@ small {
   .feature-icon img {
     height: 5vh;
   }
+
+
 }
 
 @media only screen and (max-width: 575px) {
+  h2 {
+    font-size: 1.4rem;
+  }
+
   .features-section .feature-inner {
     height: 7vw;
   }
@@ -947,9 +958,21 @@ small {
 
   .single-catagory-item {
     height: 215px;
+  }
+}
 
+@media only screen and (max-width: 380px) {
+  h2 {
+    font-size: 1.1rem;
   }
 
+  .offer__content h4 {
+    font-size: 1.5rem;
+  }
+
+  .section_title {
+    font-size: 20px;
+  }
 }
 
 /* end responsive */
