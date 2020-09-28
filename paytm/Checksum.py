@@ -5,7 +5,6 @@ import random
 import hashlib
 from Crypto.Cipher import AES
 
-
 IV = "@@@@&&&&####$$$$"
 BLOCK_SIZE = 16
 
