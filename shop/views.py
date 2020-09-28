@@ -21,8 +21,12 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import classification_report
+from dotenv import load_dotenv
+import os
 
-MERCHANT_KEY = 'm key'
+load_dotenv()
+
+MERCHANT_KEY = os.getenv("DJANGO_MERCHANT_KEY")
 
 
 def home(request):
@@ -80,18 +84,6 @@ def search(request):
 
     except:
         params["msg"] = "Please enter a valid search query"
-
-    # for cat in cats:
-    #     prods = product.objects.filter(category=cat)
-
-    #     prod = [item for item in prods if matchSearch(query, item)]
-    #     if len(prod) != 0:
-
-    #         products.append(prod)
-    # params = {'products': products[0]}
-    # if len(products) == 0 or len(query) < 3:
-    #     print("ERRRORR")
-    #     params["msg"] = "Please enter a valid search query"
 
     return render(request, 'search.html', params)
 
@@ -186,7 +178,7 @@ def checkout(request):
         id = order.order_id
         param_dict = {
 
-            'MID': 'm id',
+            'MID': os.getenv("DJANGO_MERCHANT_ID"),
             'ORDER_ID': str(order.order_id),
             'TXN_AMOUNT': str(amount),
             'CUST_ID': email,
