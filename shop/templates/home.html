@@ -5,19 +5,20 @@
 
 {% block body %}
 
+{% with URL="https://shopperspace.s3.amazonaws.com/media/shop/images/" %} 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner " style="  font-family: 'Josefin Sans', 'sans-serif'; ">
 
         <div  class="carousel-item active  " >
-            <img class="d-block w-100 img-responsive"  src="/media/shop/images/carousel/carousel-1.png" alt="First slide">
+            <img class="d-block w-100 img-responsive"  src="{{URL}}carousel/carousel-1.png" alt="First slide">
             
         </div>     
         <div  class="carousel-item  ">
-            <img class="d-block w-100 img-responsive" src="/media/shop/images/carousel/carousel-2.png" alt="Second slide">
+            <img class="d-block w-100 img-responsive" src="{{URL}}carousel/carousel-2.png" alt="Second slide">
                   
         </div>
         <div  class="carousel-item ">
-            <img class="d-block w-100 img-responsive" src="/media/shop/images/carousel/carousel-3.png" alt="Third slide">
+            <img class="d-block w-100 img-responsive" src="{{URL}}carousel/carousel-3.png" alt="Third slide">
            
         </div>
     </div>
@@ -37,7 +38,7 @@
             <div class="col-md-4 p-0 feature animated slideInLeft">
                 <div class="feature-inner">
                     <div class="feature-icon">
-                        <img src="/media/shop/images/img/1.png" alt="#">
+                        <img src="{{URL}}img/1.png" alt="#">
                     </div>
                     <h5 class="feature-text">Fast Secure Payments</h5>
                 </div>
@@ -45,7 +46,7 @@
             <div class="col-md-4 p-0 feature animated fadeIn">
                 <div class="feature-inner">
                     <div class="feature-icon">
-                        <img src="/media/shop/images/img/2.png" alt="#">
+                        <img src="{{URL}}img/2.png" alt="#">
                     </div>
                     <h5>Authenticate Products</h5>
                 </div>
@@ -54,7 +55,7 @@
             <div class="col-md-4 p-0 feature animated slideInRight">
                 <div class="feature-inner">
                     <div class="feature-icon">
-                        <img src="/media/shop/images/img/3.png" alt="#">
+                        <img src="{{URL}}img/3.png" alt="#">
                     </div>
                     <h5>Free & fast Delivery</h5>
                 </div>
@@ -68,14 +69,14 @@
     <div class="col-lg-4">
 
        <a href="/head-phone" > 
-           <div   class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-1.jpg);">
+           <div   class="single-catagory-item set-bg" style="background-image: url({{URL}}catagories/catagories-1.jpg);">
             <div class="si-text">
                 <h4>Head Phone</h4>  
             </div>
         </div>
       </a>
       <a href="/shoes" >  
-        <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-4.jpg);">
+        <div class="single-catagory-item set-bg" style="background-image: url({{URL}}catagories/catagories-4.jpg);">
             <div class="si-text">
                 <h4>Shoes</h4>
                 
@@ -85,7 +86,7 @@
     </div>
     <div class="col-lg-4">
         <a href="/smart-phone" > 
-        <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-2.jpg);">
+        <div class="single-catagory-item set-bg" style="background-image: url({{URL}}catagories/catagories-2.jpg);">
             <div class="si-text">
                 <h4>Smart Phone</h4>
                 
@@ -93,7 +94,7 @@
         </div>
         </a>
         <a href="/cap" > 
-        <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-5.jpg);">
+        <div class="single-catagory-item set-bg" style="background-image: url({{URL}}catagories/catagories-5.jpg);">
             <div class="si-text">
                 <h4>Cap</h4>
                 
@@ -103,7 +104,7 @@
     </div>
     <div class="col-lg-4">
         <a href="/laptop" > 
-        <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-3.jpg);">
+        <div class="single-catagory-item set-bg" style="background-image: url({{URL}}catagories/catagories-3.jpg);">
             <div class="si-text">
                 <h4>Laptop</h4>
                 
@@ -111,7 +112,7 @@
         </div>
         </a>
         <a href="/clothes" > 
-        <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-6.jpg);">
+        <div class="single-catagory-item set-bg" style="background-image: url({{URL}}catagories/catagories-6.jpg);">
             <div class="si-text">
                 <h4>Clothes</h4>
                 
@@ -121,7 +122,7 @@
     </div>
     <div class="col-lg-4">
         <a href="/home-decors" > 
-        <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-7.jpg);">
+        <div class="single-catagory-item set-bg" style="background-image: url({{URL}}catagories/catagories-7.jpg);">
             <div class="si-text">
                 <h4>Home Decors</h4>
                
@@ -129,7 +130,7 @@
         </div>
         </a>
         <a href="/wrist-watch" > 
-        <div class="single-catagory-item set-bg" style="background-image: url(/media/shop/images/catagories/catagories-8.jpg);">
+        <div class="single-catagory-item set-bg" style="background-image: url({{URL}}catagories/catagories-8.jpg);">
             <div class="si-text">
                 <h4>Wrist Watch</h4>
                 
@@ -207,15 +208,15 @@
     <div class="container deals-container">
 
     <a href="/wrist-watch-fastrack/" class="deals-img ">
-    <img  src="/media/shop/images/img/deals-1.jpg" alt="fastrack">
+    <img  src="{{URL}}img/deals-1.jpg" alt="fastrack">
     </a>
 
     <a href="/jewellery/" class="deals-img">
-    <img  src="/media/shop/images/img/deals-2.jpg" alt="jewellery">   
+    <img  src="{{URL}}img/deals-2.jpg" alt="jewellery">   
     </a>
 
     <a href="/shoes/" class="deals-img ">
-    <img  src="/media/shop/images/img/deals-3.jpg" alt="shoes">
+    <img  src="{{URL}}img/deals-3.jpg" alt="shoes">
     </a>
   
    </div>
@@ -230,7 +231,8 @@
 <section class="offer mt-5" id="parallax-1" 
 data-anchor-target="#parallax-1" 
 data-300-top="background-position: 20px 30px" 
-data-top-bottom="background-position: 0 20px">
+data-top-bottom="background-position: 0 20px"
+style="background-image:url({{URL}}img/winter.png)">
     <div class="container">
       <div class="row">
         <div class="col-xl-5">
@@ -311,19 +313,19 @@ data-top-bottom="background-position: 0 20px">
      <div class="container deals-container">
 
         <a href="/accessories/" class="budget-img ">
-        <img  src="/media/shop/images/img/budget-1.jpg" alt="accessories">
+        <img  src="{{URL}}img/budget-1.jpg" alt="accessories">
         </a>
 
          <a href="/shoes/" class="budget-img">
-        <img  src="/media/shop/images/img/budget-2.jpg" alt="shoes">
+        <img  src="{{URL}}img/budget-2.jpg" alt="shoes">
         </a>
 
          <a href="/head-phone/" class="budget-img">
-        <img  src="/media/shop/images/img/budget-3.jpg" alt="head-phone">
+        <img  src="{{URL}}img/budget-3.jpg" alt="head-phone">
         </a>
 
          <a href="/grooming/" class="budget-img">
-        <img  src="/media/shop/images/img/budget-4.jpg" alt="groomimg">
+        <img  src="{{URL}}img/budget-4.jpg" alt="groomimg">
         </a>
        
 
@@ -336,7 +338,7 @@ data-top-bottom="background-position: 0 20px">
 {% else %}
 <div class="newsletter mb-5 mt-5">
     <div class="row">
-        <div class="newsletter_image" style="background-image:url(/media/shop/images/img/subscribe.jpg)">
+        <div class="newsletter_image" style="background-image:url({{URL}}img/subscribe.jpg)">
          <div class="newsletter-layer" > 
           
             <div class="container">
@@ -376,7 +378,7 @@ data-top-bottom="background-position: 0 20px">
   
 
 <!-- end subscribe -->
-
+{% endwith %}
 {% endblock %}
 
 

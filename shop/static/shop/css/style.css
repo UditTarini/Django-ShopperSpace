@@ -229,7 +229,7 @@ small {
 }
 
 .paralimg {
-  background-image: url("/media/shop/images/img/newsletter.jpg");
+  background-image: url("https://shopperspace.s3.amazonaws.com/media/shop/images/img/newsletter.jpg");
   background-size: cover;
 }
 
@@ -835,7 +835,7 @@ small {
 /* offfer */
 
 .offer {
-  background: url("/media/shop/images/img/winter.png") right center no-repeat;
+
   background-size: cover;
 }
 
