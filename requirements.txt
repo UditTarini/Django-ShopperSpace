@@ -27,7 +27,7 @@ fuzzywuzzy==0.17.0
 humanfriendly==4.18
 idna==2.8
 isort==4.3.21
-joblib==0.16.0
+joblib==1.2.0
 Js2Py==0.67
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
